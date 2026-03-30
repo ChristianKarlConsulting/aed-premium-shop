@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a60012"/>
+      <stop offset="100%" style="stop-color:#cb2426"/>
+    </linearGradient>
+    <linearGradient id="pulseGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color:#a60012;stop-opacity:0"/>
+      <stop offset="30%" style="stop-color:#a60012;stop-opacity:1"/>
+      <stop offset="70%" style="stop-color:#cb2426;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#cb2426;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: Rounded square with heart + pulse -->
+  <rect x="4" y="12" width="56" height="56" rx="16" fill="url(#heartGrad)"/>
+
+  <!-- Heart shape -->
+  <path d="M32 32c-2-4-7-5-10-3s-4 7-1 11l11 12 11-12c3-4 2-9-1-11s-8-1-10 3z" fill="white" opacity="0.95"/>
+
+  <!-- Pulse line overlay -->
+  <polyline points="14,40 24,40 28,30 32,50 36,35 40,42 46,40 56,40" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+
+  <!-- Text: AED -->
+  <text x="76" y="48" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="900" font-size="36" fill="#271716" letter-spacing="-1">AED</text>
+
+  <!-- Text: Premium -->
+  <text x="166" y="48" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="900" font-size="36" fill="#a60012" letter-spacing="-1">Premium</text>
+
+  <!-- Subtle tagline -->
+  <text x="76" y="64" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="500" font-size="10" fill="#5c403d" letter-spacing="3" text-transform="uppercase">LEBENSRETTENDE LÖSUNGEN</text>
+</svg>
