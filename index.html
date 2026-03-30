@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>AED Premium | Lebensrettende Lösungen</title>
-    <meta name="description" content="Professionelle AED Defibrillatoren für Unternehmen, Vereine und Privatpersonen. Zertifizierte Qualität, 24/7 Support und bundesweite Schulungen." />
+    <meta name="description" content="Professionelle AED Defibrillatoren für Unternehmen, Vereine und Privatpersonen. Zertifizierte Qualität, 24/7 Support." />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
@@ -14,64 +14,38 @@
             theme: {
                 extend: {
                     colors: {
-                        "tertiary-fixed-dim": "#8dcdff",
                         "on-surface-variant": "#5c403d",
                         "primary": "#a60012",
-                        "on-tertiary-fixed": "#001e30",
-                        "error": "#ba1a1a",
                         "primary-container": "#cb2426",
                         "surface-container-highest": "#fadcd8",
                         "secondary": "#a23d37",
-                        "surface-container-lowest": "#ffffff",
-                        "on-tertiary-container": "#d8ecff",
-                        "tertiary-fixed": "#cae6ff",
                         "outline-variant": "#e4bdb9",
                         "secondary-container": "#fc8277",
                         "on-secondary": "#ffffff",
                         "surface": "#fff8f7",
                         "surface-variant": "#fadcd8",
-                        "secondary-fixed": "#ffdad6",
                         "primary-fixed-dim": "#ffb4ac",
-                        "inverse-on-surface": "#ffedea",
                         "surface-container-high": "#ffe2de",
-                        "on-primary-fixed": "#410003",
                         "primary-fixed": "#ffdad6",
-                        "error-container": "#ffdad6",
                         "on-primary": "#ffffff",
-                        "on-error": "#ffffff",
-                        "on-tertiary-fixed-variant": "#004b70",
-                        "inverse-primary": "#ffb4ac",
                         "on-tertiary": "#ffffff",
-                        "surface-bright": "#fff8f7",
-                        "surface-tint": "#bb161d",
                         "surface-container": "#ffe9e6",
                         "background": "#fff8f7",
                         "outline": "#906f6c",
                         "surface-container-low": "#fff0ef",
                         "inverse-surface": "#3e2c2a",
-                        "on-error-container": "#93000a",
-                        "on-secondary-fixed": "#410003",
                         "on-primary-container": "#ffe3e0",
                         "tertiary-container": "#006fa3",
                         "on-surface": "#271716",
                         "on-background": "#271716",
                         "tertiary": "#00567f",
                         "surface-dim": "#f1d3d0",
-                        "on-primary-fixed-variant": "#93000e",
-                        "on-secondary-fixed-variant": "#822622",
-                        "secondary-fixed-dim": "#ffb4ac",
+                        "on-tertiary-container": "#d8ecff",
                         "on-secondary-container": "#721a18"
                     },
                     fontFamily: {
                         "headline": ["Inter", "sans-serif"],
                         "body": ["Inter", "sans-serif"],
-                        "label": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
                     },
                 },
             },
@@ -83,339 +57,394 @@
             vertical-align: middle;
         }
         body { font-family: 'Inter', sans-serif; }
+        html { scroll-padding-top: 7rem; }
 
-        /* Smooth scroll offset for fixed header */
-        html { scroll-padding-top: 5rem; }
+        /* Top bar */
+        @media (min-width: 768px) {
+            .top-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 51; }
+        }
 
-        /* Mobile menu animation */
-        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        /* Mobile menu */
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
         .mobile-menu.open { transform: translateX(0); }
 
-        /* Fade-in animation */
-        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        /* Animations */
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .fade-up:nth-child(2) { transition-delay: 0.1s; }
+        .fade-up:nth-child(3) { transition-delay: 0.2s; }
 
-        /* Counter animation */
-        .counter { display: inline-block; }
+        /* Product cards */
+        .product-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.1); }
+        .product-card:hover .product-img { transform: scale(1.06); }
+        .product-img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
 
-        /* Product card hover */
-        .product-card:hover .product-img { transform: scale(1.08); }
-        .product-img { transition: transform 0.5s ease; }
+        /* Nav link underline animation */
+        .nav-link::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 3px;
+            background: #a60012; border-radius: 3px 3px 0 0; transition: all 0.3s ease; transform: translateX(-50%);
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link.active { color: #a60012; }
+
+        /* Gradient text */
+        .gradient-text { background: linear-gradient(135deg, #a60012 0%, #cb2426 50%, #00567f 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        /* Glassmorphism card */
+        .glass { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+        /* Bento hover */
+        .bento-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
+        .bento-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -12px rgba(0,0,0,0.08); }
+
+        /* FAQ */
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding-top: 0; padding-bottom: 0; }
+        .faq-content.open { max-height: 300px; padding-top: 0; padding-bottom: 1.5rem; }
+
+        /* Shine animation on CTA */
+        @keyframes shine { from { left: -100%; } to { left: 200%; } }
+        .btn-shine { position: relative; overflow: hidden; }
+        .btn-shine::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="bg-background text-on-background antialiased overflow-x-hidden">
 
-    <!-- TopNavBar -->
-    <header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-            <a href="index.html" class="text-2xl font-black text-primary tracking-tighter">
-                AED Premium
-            </a>
-            <nav class="hidden md:flex items-center space-x-8 font-sans text-sm font-medium">
-                <a class="text-primary border-b-2 border-primary pb-1 transition-colors duration-200" href="index.html">Shop</a>
-                <a class="text-slate-600 hover:text-primary transition-colors duration-200" href="b2b.html">B2B &amp; Verbände</a>
-                <a class="text-slate-600 hover:text-primary transition-colors duration-200" href="kaufberater.html">Kaufberater</a>
-                <a class="text-slate-600 hover:text-primary transition-colors duration-200" href="#support">Support</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <button class="relative text-slate-600 hover:text-primary active:opacity-80 transition-all" aria-label="Warenkorb">
-                    <span class="material-symbols-outlined">shopping_cart</span>
-                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center">0</span>
-                </button>
-                <button class="text-slate-600 hover:text-primary active:opacity-80 transition-all" aria-label="Konto">
-                    <span class="material-symbols-outlined">person</span>
-                </button>
-                <button id="menuToggle" class="md:hidden text-slate-600" aria-label="Menü öffnen">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
+    <!-- Top Info Bar -->
+    <div class="top-bar hidden md:block bg-inverse-surface text-white/90 text-xs">
+        <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">local_shipping</span> Gratis Versand ab 500 €</span>
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">verified</span> Zertifizierte Medizinprodukte</span>
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">undo</span> 30 Tage Rückgabe</span>
+            </div>
+            <div class="flex items-center gap-5">
+                <a href="tel:+4930123456789" class="flex items-center gap-1.5 hover:text-white transition-colors"><span class="material-symbols-outlined text-[13px]">phone</span> +49 30 1234 567 89</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="fixed top-0 md:top-[32px] w-full z-50 bg-white/95 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16 md:h-[68px]">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 bg-gradient-to-br from-primary to-primary-container rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+                        <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings: 'FILL' 1">favorite</span>
+                    </div>
+                    <span class="text-[22px] font-black tracking-tight"><span class="text-on-surface">AED</span><span class="text-primary"> Premium</span></span>
+                </a>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center h-full gap-1">
+                    <a class="nav-link active relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase transition-colors" href="index.html">Shop</a>
+                    <a class="nav-link relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="b2b.html">B2B</a>
+                    <a class="nav-link relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="kaufberater.html">Berater</a>
+                    <a class="nav-link relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="#support">Support</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-0.5">
+                    <button class="p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary" aria-label="Suche">
+                        <span class="material-symbols-outlined text-[22px]">search</span>
+                    </button>
+                    <a href="warenkorb.html" class="relative p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary" aria-label="Warenkorb">
+                        <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+                        <span class="absolute top-1.5 right-1.5 w-[14px] h-[14px] bg-primary text-white text-[8px] font-bold rounded-full flex items-center justify-center ring-2 ring-white">0</span>
+                    </a>
+                    <button class="p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary" aria-label="Konto">
+                        <span class="material-symbols-outlined text-[22px]">person</span>
+                    </button>
+                    <button id="menuToggle" class="md:hidden p-2.5 rounded-xl hover:bg-surface-container text-on-surface-variant" aria-label="Menü">
+                        <span class="material-symbols-outlined text-[22px]">menu</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu Overlay -->
+    <!-- Mobile Menu -->
     <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-white flex flex-col">
-        <div class="flex justify-between items-center px-6 py-4 border-b border-slate-200">
-            <span class="text-2xl font-black text-primary tracking-tighter">AED Premium</span>
-            <button id="menuClose" class="text-slate-600" aria-label="Menü schließen">
-                <span class="material-symbols-outlined">close</span>
-            </button>
+        <div class="flex justify-between items-center px-6 py-4 border-b">
+            <span class="text-xl font-black"><span class="text-on-surface">AED</span><span class="text-primary"> Premium</span></span>
+            <button id="menuClose"><span class="material-symbols-outlined">close</span></button>
         </div>
-        <nav class="flex flex-col px-6 py-8 space-y-6 text-lg font-semibold">
+        <nav class="flex flex-col px-6 py-8 space-y-5 text-lg font-semibold">
             <a class="text-primary" href="index.html">Shop</a>
-            <a class="text-slate-600 hover:text-primary" href="b2b.html">B2B &amp; Verbände</a>
-            <a class="text-slate-600 hover:text-primary" href="kaufberater.html">Kaufberater</a>
-            <a class="text-slate-600 hover:text-primary" href="#support">Support</a>
+            <a class="text-on-surface-variant" href="b2b.html">B2B &amp; Verbände</a>
+            <a class="text-on-surface-variant" href="kaufberater.html">Kaufberater</a>
+            <a class="text-on-surface-variant" href="#support">Support</a>
         </nav>
+        <div class="mt-auto px-6 py-6 border-t">
+            <a href="tel:+4930123456789" class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-lg">phone</span> +49 30 1234 567 89</a>
+        </div>
     </div>
 
-    <main class="pt-20">
+    <main class="pt-16 md:pt-[100px]">
 
-        <!-- Hero Section -->
-        <section class="relative min-h-[870px] flex items-center overflow-hidden bg-surface">
-            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-                <div class="space-y-8 fade-in">
-                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-primary-container/10 text-primary text-xs font-bold uppercase tracking-wider">
-                        Professionelle Herzversorgung
+        <!-- Hero -->
+        <section class="relative min-h-[90vh] flex items-center overflow-hidden">
+            <!-- Subtle gradient background -->
+            <div class="absolute inset-0 bg-gradient-to-br from-surface via-white to-surface-container-low"></div>
+            <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-tertiary/[0.03] rounded-full blur-3xl"></div>
+
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10 py-16 md:py-0">
+                <div class="space-y-7 fade-up">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-outline-variant/50 shadow-sm text-xs font-semibold text-on-surface-variant">
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                        Über 15.000 Geräte im Einsatz
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-black text-on-surface leading-[1.1] tracking-tight">
-                        Sekunden zählen. <br />
-                        <span class="text-primary">Zuverlässigkeit auch.</span>
+                    <h1 class="text-5xl md:text-[4.5rem] font-black text-on-surface leading-[1.05] tracking-tight">
+                        Sekunden zählen.<br/>
+                        <span class="gradient-text">Zuverlässigkeit auch.</span>
                     </h1>
-                    <p class="text-lg text-on-surface-variant max-w-lg leading-relaxed">
-                        Statten Sie Ihre Räumlichkeiten mit branchenführenden Automatisierten Externen Defibrillatoren aus. Zertifizierte Technologie, die im Notfall für jedermann einfach zu bedienen ist.
+                    <p class="text-lg text-on-surface-variant max-w-md leading-relaxed font-light">
+                        AEDs, die jeder bedienen kann. Zertifiziert, sofort einsatzbereit und mit persönlichem Service.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#produkte" class="bg-primary text-on-primary px-8 py-4 rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-[0.98] text-center">
-                            Jetzt Shoppen
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                        <a href="#produkte" class="btn-shine bg-primary text-on-primary px-8 py-4 rounded-xl font-bold text-base hover:shadow-xl hover:shadow-primary/15 transition-all active:scale-[0.98] text-center">
+                            Geräte entdecken
                         </a>
-                        <a href="kaufberater.html" class="bg-white border-2 border-primary/20 text-on-surface px-8 py-4 rounded-lg font-bold text-lg hover:bg-surface-container-low transition-all text-center">
-                            Kaufberater starten
+                        <a href="kaufberater.html" class="flex items-center justify-center gap-2 bg-white border border-outline-variant/50 text-on-surface px-8 py-4 rounded-xl font-bold text-base hover:border-primary/30 hover:bg-surface-container-low transition-all text-center shadow-sm">
+                            <span class="material-symbols-outlined text-lg text-primary">assistant</span>
+                            Berater starten
                         </a>
+                    </div>
+                    <!-- Trust row -->
+                    <div class="flex items-center gap-6 pt-4 text-xs text-on-surface-variant font-medium">
+                        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span> CE-zertifiziert</span>
+                        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span> 5-10 J. Garantie</span>
+                        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span> 24/7 Support</span>
                     </div>
                 </div>
-                <div class="relative fade-in">
-                    <div class="absolute -inset-10 bg-primary/5 rounded-full blur-3xl"></div>
-                    <img alt="Premium AED Gerät – Automatisierter Externer Defibrillator in professionellem Setting"
-                         class="relative z-10 w-full h-auto drop-shadow-2xl rounded-2xl border border-white/20"
+
+                <div class="relative fade-up">
+                    <div class="absolute -inset-6 bg-gradient-to-br from-primary/5 via-transparent to-tertiary/5 rounded-[2rem] blur-2xl"></div>
+                    <img alt="Premium AED Defibrillator"
+                         class="relative z-10 w-full h-auto rounded-2xl shadow-2xl"
                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU5ZNooQyQ46XNCKSYiw4uqHcVMCF7mYvyzayzcYtTmPPKBR1chBQUdZbJa0o_yQezRwHy1-G9VZwKihrEUehnD0uoTZXoCI9PEREWe6Mvkc8HwQWE3HjOZjNXM1pGekwCE13cGQzTJzQ68d9L6J1Z4BQ7P3ZL2t3vZGxiVD8nWMyadkj1G91jzUNxvQNW5s1DvrMNXdZzukEkD6dSHVpZX3GqzudNlD9VlbVO5yjNl9Z6G8VwGv_Fklh0R7fTZmC4QaVNHaVuM1Bv" />
                 </div>
             </div>
         </section>
 
-        <!-- Value Propositions (Bento Grid) -->
+        <!-- Bento Grid -->
         <section class="py-24 px-6 max-w-7xl mx-auto">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-3xl md:text-4xl font-black text-on-surface mb-4">Maßgeschneiderte Lösungen für jeden Bedarf</h2>
-                <div class="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+            <div class="text-center mb-16 fade-up">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Für jeden Einsatz</p>
+                <h2 class="text-3xl md:text-5xl font-black text-on-surface">Die passende Lösung</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
-                <!-- B2B / Enterprise -->
-                <a href="b2b.html" class="md:col-span-8 bg-surface-container-high rounded-3xl p-10 flex flex-col justify-between overflow-hidden relative group cursor-pointer">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5 h-auto md:h-[580px]">
+                <!-- B2B -->
+                <a href="b2b.html" class="bento-card md:col-span-8 bg-surface-container-high rounded-[1.5rem] p-10 flex flex-col justify-between overflow-hidden relative group cursor-pointer">
                     <div class="relative z-10">
-                        <span class="material-symbols-outlined text-primary text-4xl mb-4">corporate_fare</span>
-                        <h3 class="text-3xl font-black text-on-surface mb-4">B2B &amp; Unternehmen</h3>
-                        <p class="text-on-surface-variant text-lg max-w-md">
-                            Umfassende Sicherheits-Compliance für große Arbeitsplätze. Flottenmanagement, automatisierte Überwachung und steuerlich absetzbare Sicherheitsinvestitionen.
+                        <span class="material-symbols-outlined text-primary text-3xl mb-3">corporate_fare</span>
+                        <h3 class="text-2xl md:text-3xl font-black text-on-surface mb-3">Für Unternehmen</h3>
+                        <p class="text-on-surface-variant text-base max-w-md leading-relaxed">
+                            Flottenmanagement, Compliance und Vor-Ort-Wartung. Alles aus einer Hand.
                         </p>
                     </div>
-                    <span class="relative z-10 mt-8 w-fit flex items-center gap-2 font-bold text-primary group-hover:gap-4 transition-all">
-                        Angebot für Unternehmen anfordern <span class="material-symbols-outlined">arrow_forward</span>
+                    <span class="relative z-10 mt-6 w-fit flex items-center gap-2 font-bold text-primary text-sm group-hover:gap-3 transition-all">
+                        Mehr erfahren <span class="material-symbols-outlined text-lg">arrow_forward</span>
                     </span>
-                    <div class="absolute right-0 bottom-0 w-1/2 h-full opacity-10 group-hover:opacity-20 transition-opacity">
-                        <img alt="Modernes Büro" class="object-cover h-full w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMqcZiJ6vHkp7U3RKMRbIHtupTn9Culbyhd3es5zbbnB78fffWl2dNBGVgSatAHlukZXSnR1TP7tQ5V10cdCMH6F8CwLuV1sMYPy6LGyB4vmso_RMXQLQ4HspcIqZj0ZRqGHxlGF0_kXGEufxNzzNwLG94DHgw0NNbg0pbrsQcrfWEK9rs0-2hnLaEzuhrNSnC5nsUe-amDDqkBMbVzgGfbk9D5sUkJs5g4PnoNSP1H9pQXSdM4LnnALEH51-Y-9bnjkyKuSi5seA0" />
+                    <div class="absolute right-0 bottom-0 w-1/2 h-full opacity-[0.07] group-hover:opacity-[0.12] transition-opacity">
+                        <img alt="" class="object-cover h-full w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMqcZiJ6vHkp7U3RKMRbIHtupTn9Culbyhd3es5zbbnB78fffWl2dNBGVgSatAHlukZXSnR1TP7tQ5V10cdCMH6F8CwLuV1sMYPy6LGyB4vmso_RMXQLQ4HspcIqZj0ZRqGHxlGF0_kXGEufxNzzNwLG94DHgw0NNbg0pbrsQcrfWEK9rs0-2hnLaEzuhrNSnC5nsUe-amDDqkBMbVzgGfbk9D5sUkJs5g4PnoNSP1H9pQXSdM4LnnALEH51-Y-9bnjkyKuSi5seA0" />
                     </div>
                 </a>
 
-                <!-- Clubs & Sports -->
-                <div class="md:col-span-4 bg-primary text-on-primary rounded-3xl p-10 flex flex-col justify-between hover:scale-[1.02] transition-transform">
+                <!-- Vereine -->
+                <div class="bento-card md:col-span-4 bg-primary text-on-primary rounded-[1.5rem] p-10 flex flex-col justify-between">
                     <div>
-                        <span class="material-symbols-outlined text-on-primary text-4xl mb-4">sports_soccer</span>
-                        <h3 class="text-2xl font-bold mb-4">Vereine &amp; Sport</h3>
-                        <p class="text-on-primary/80">
-                            Tragbare, robuste und IP55-zertifizierte AEDs, speziell für den Spielfeldrand entwickelt. Schützen Sie Ihre Athleten und Zuschauer.
+                        <span class="material-symbols-outlined text-3xl mb-3 opacity-90">sports_soccer</span>
+                        <h3 class="text-2xl font-bold mb-3">Vereine &amp; Sport</h3>
+                        <p class="text-on-primary/70 text-sm leading-relaxed">
+                            Robust, tragbar und wetterfest. Für Training, Wettkampf und Vereinsheim.
                         </p>
                     </div>
-                    <div class="mt-8 space-y-2">
-                        <div class="flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-xs">check_circle</span> Stoßfest &amp; wetterfest</div>
-                        <div class="flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-xs">check_circle</span> Schnelles Laden</div>
-                        <div class="flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-xs">check_circle</span> Sprachführung in 6 Sprachen</div>
+                    <div class="mt-6 space-y-2 text-sm">
+                        <div class="flex items-center gap-2 opacity-90"><span class="material-symbols-outlined text-xs">check_circle</span> IP55 Schutzklasse</div>
+                        <div class="flex items-center gap-2 opacity-90"><span class="material-symbols-outlined text-xs">check_circle</span> 6 Sprachen</div>
+                        <div class="flex items-center gap-2 opacity-90"><span class="material-symbols-outlined text-xs">check_circle</span> Kindermodus</div>
                     </div>
                 </div>
 
-                <!-- Private Users -->
-                <div class="md:col-span-4 bg-surface-container-low border border-outline-variant rounded-3xl p-10 flex flex-col justify-between">
+                <!-- Privat -->
+                <div class="bento-card md:col-span-4 bg-white border border-outline-variant/40 rounded-[1.5rem] p-10 flex flex-col justify-between shadow-sm">
                     <div>
-                        <span class="material-symbols-outlined text-primary text-4xl mb-4">home</span>
-                        <h3 class="text-2xl font-bold text-on-surface mb-4">Privatanwender</h3>
-                        <p class="text-on-surface-variant">
-                            Sicherheit für Ihre Familie. Benutzerfreundliche Heimgeräte mit sprachgesteuerter Anleitung und visuellen Hilfen.
+                        <span class="material-symbols-outlined text-primary text-3xl mb-3">home</span>
+                        <h3 class="text-2xl font-bold text-on-surface mb-3">Für Zuhause</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Einfach wie ein Feuerlöscher. Sprachgeführt, kompakt und sofort einsatzbereit.
                         </p>
                     </div>
-                    <a class="mt-6 text-primary font-bold underline underline-offset-4 hover:no-underline" href="kaufberater.html">Mehr über Heim-AEDs erfahren</a>
+                    <a class="mt-6 text-primary font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all" href="kaufberater.html">
+                        Heim-AED finden <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                    </a>
                 </div>
 
-                <!-- Training & Support -->
-                <div class="md:col-span-8 bg-on-surface text-surface rounded-3xl p-10 flex items-center justify-between relative overflow-hidden">
+                <!-- Schulung -->
+                <div class="bento-card md:col-span-8 bg-inverse-surface text-white rounded-[1.5rem] p-10 flex items-center justify-between relative overflow-hidden">
                     <div class="relative z-10 max-w-lg">
-                        <h3 class="text-3xl font-black mb-4">Zertifizierte Schulung</h3>
-                        <p class="text-surface/70 text-lg">
-                            Wir verkaufen nicht nur Hardware. Wir bieten zertifizierte HLW- und AED-Schulungen für Teams und Einzelpersonen an.
+                        <p class="text-xs font-bold uppercase tracking-[0.15em] text-primary-fixed-dim mb-2">Inklusive Schulung</p>
+                        <h3 class="text-2xl md:text-3xl font-black mb-3">Nicht nur Hardware. Auch Know-how.</h3>
+                        <p class="text-white/60 text-sm leading-relaxed mb-6">
+                            BG-konforme Kurse, direkt bei Ihnen. Für Teams und Einzelpersonen.
                         </p>
-                        <button class="mt-8 px-6 py-3 bg-white text-on-surface font-bold rounded-lg hover:bg-surface-container-high transition-all">
-                            Kurs buchen
+                        <button class="px-6 py-3 bg-white text-on-surface font-bold text-sm rounded-xl hover:bg-surface-container-high transition-all">
+                            Kursangebot ansehen
                         </button>
                     </div>
-                    <div class="hidden lg:block relative z-10">
-                        <span class="material-symbols-outlined text-[120px] opacity-20">school</span>
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                    <span class="hidden lg:block material-symbols-outlined text-[100px] opacity-[0.08] absolute right-10">school</span>
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary/15 to-transparent"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Product Highlight Section -->
-        <section class="py-24 bg-surface-container" id="produkte">
+        <!-- Products -->
+        <section class="py-24 bg-white" id="produkte">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6 fade-in">
+                <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-4 fade-up">
                     <div>
+                        <p class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-2">Unsere Geräte</p>
                         <h2 class="text-3xl md:text-5xl font-black text-on-surface tracking-tight">Bestseller</h2>
-                        <p class="text-on-surface-variant mt-2">Weltklasse-Zuverlässigkeit, von Profis gewählt.</p>
                     </div>
-                    <button class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                        Alle Produkte ansehen <span class="material-symbols-outlined">chevron_right</span>
-                    </button>
+                    <a href="vergleich.html" class="text-primary font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+                        Alle vergleichen <span class="material-symbols-outlined text-lg">chevron_right</span>
+                    </a>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Product 1 -->
-                    <div class="product-card bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/30 hover:shadow-xl transition-all group">
-                        <div class="aspect-square rounded-xl bg-slate-50 mb-6 overflow-hidden flex items-center justify-center p-8">
-                            <img alt="ProGuard-X Defibrillator – Professioneller AED für hochfrequentierte Umgebungen"
-                                 class="product-img w-full h-full object-contain"
+                    <div class="product-card bg-background rounded-2xl p-5 border border-outline-variant/20">
+                        <div class="aspect-[4/3] rounded-xl bg-surface-container-low mb-5 overflow-hidden flex items-center justify-center p-8">
+                            <img alt="ProGuard-X Defibrillator" class="product-img w-full h-full object-contain"
                                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH5-Fv95cxggy_mOC69ijZgzcvAnR8NwTqkz-6etbWe8XcVqRl18yrjiOxZb4FVZ_OkKksovdLWY4Nl5YOOKXnhgdwAXFIz2_GvIyfJtHzAf4tWaupRM9LklljVPW3jsdDXu27Itv0Hf1PsK5HtGMGtpghiSGQNS5f0DgIoR0hNtn8Sd538OtFlLanpzqDXwLZbv3SKy4UtwRkOXtD29WwhxUYRvnaynLqsqyxhas7jQv4su1m6URq_XfzxFI-rHgz5ZkBozsQOuFe" />
                         </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between items-start">
-                                <h4 class="text-xl font-bold text-on-surface">ProGuard-X Defibrillator</h4>
-                                <span class="text-primary font-black text-lg">1.499 €</span>
-                            </div>
-                            <p class="text-sm text-on-surface-variant">Der Goldstandard für hochfrequentierte Umgebungen. Inklusive 8 Jahre Garantie.</p>
-                            <div class="flex items-center gap-1 text-yellow-500 text-sm">
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="text-on-surface-variant text-xs ml-1">(127)</span>
-                            </div>
-                            <div class="pt-4 flex items-center gap-2">
-                                <button class="flex-1 bg-primary text-on-primary py-3 rounded-lg font-bold hover:bg-primary-container transition-colors">In den Warenkorb</button>
-                                <button class="p-3 bg-surface-container-low text-on-surface rounded-lg hover:bg-surface-container transition-colors" aria-label="Favorit">
-                                    <span class="material-symbols-outlined">favorite</span>
-                                </button>
-                            </div>
+                        <div class="flex justify-between items-start mb-1.5">
+                            <h4 class="text-lg font-bold text-on-surface">ProGuard-X</h4>
+                            <span class="text-primary font-black text-lg">1.499 €</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant mb-1">Unser Allrounder. 8 Jahre Garantie, IP55.</p>
+                        <div class="flex items-center gap-0.5 text-yellow-500 text-xs mb-4">
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="text-on-surface-variant ml-1">127 Bewertungen</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-bold text-sm hover:bg-primary-container transition-colors">In den Warenkorb</button>
+                            <button class="p-3 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors" aria-label="Merken">
+                                <span class="material-symbols-outlined text-on-surface-variant text-xl">favorite</span>
+                            </button>
                         </div>
                     </div>
 
                     <!-- Product 2 -->
-                    <div class="product-card bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/30 hover:shadow-xl transition-all group">
-                        <div class="aspect-square rounded-xl bg-slate-50 mb-6 overflow-hidden flex items-center justify-center p-8 relative">
-                            <span class="absolute top-3 left-3 bg-tertiary text-on-tertiary text-xs font-bold px-3 py-1 rounded-full">Beliebt</span>
-                            <img alt="HeartBeat Home-S – AED für den Heimgebrauch mit Kindermodus"
-                                 class="product-img w-full h-full object-contain"
+                    <div class="product-card bg-background rounded-2xl p-5 border border-outline-variant/20 relative">
+                        <span class="absolute top-8 left-8 bg-tertiary text-on-tertiary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">Beliebt</span>
+                        <div class="aspect-[4/3] rounded-xl bg-surface-container-low mb-5 overflow-hidden flex items-center justify-center p-8">
+                            <img alt="HeartBeat Home-S" class="product-img w-full h-full object-contain"
                                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcIwO1TIti-7qF0gy_3_SOoLsYJuzdMfHezFJd9vDoSZQqTAxqFgLylPz-brsDVjLe9kGxmxCsmL2Bxl6QQKzOtXw3KdW5k7MTKtXE6b8jViY2sKsZ_qBe2ymvow2vsN5lIb7DoJIzuc-YmDlvdn7gXaSHac1kzGfgCqq5gt1nAOq_1ToGIrfCGQjMuaSE-LmVNCluZO-w1LYK2uZmtMsDTpHAT5vnj5MzQkvF1Zi8yEXNxHXuEpazr6R7Iq0KdJe4dsoSZMboG4ON" />
                         </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between items-start">
-                                <h4 class="text-xl font-bold text-on-surface">HeartBeat Home-S</h4>
-                                <span class="text-primary font-black text-lg">995 €</span>
-                            </div>
-                            <p class="text-sm text-on-surface-variant">Optimiert für den Heimgebrauch mit vereinfachten Sprachanweisungen und Kindermodus-Schalter.</p>
-                            <div class="flex items-center gap-1 text-yellow-500 text-sm">
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm">star_half</span>
-                                <span class="text-on-surface-variant text-xs ml-1">(89)</span>
-                            </div>
-                            <div class="pt-4 flex items-center gap-2">
-                                <button class="flex-1 bg-primary text-on-primary py-3 rounded-lg font-bold hover:bg-primary-container transition-colors">In den Warenkorb</button>
-                                <button class="p-3 bg-surface-container-low text-on-surface rounded-lg hover:bg-surface-container transition-colors" aria-label="Favorit">
-                                    <span class="material-symbols-outlined">favorite</span>
-                                </button>
-                            </div>
+                        <div class="flex justify-between items-start mb-1.5">
+                            <h4 class="text-lg font-bold text-on-surface">HeartBeat Home-S</h4>
+                            <span class="text-primary font-black text-lg">995 €</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant mb-1">Perfekt für Zuhause. Mit Kindermodus.</p>
+                        <div class="flex items-center gap-0.5 text-yellow-500 text-xs mb-4">
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm">star_half</span>
+                            <span class="text-on-surface-variant ml-1">89 Bewertungen</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-bold text-sm hover:bg-primary-container transition-colors">In den Warenkorb</button>
+                            <button class="p-3 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors" aria-label="Merken">
+                                <span class="material-symbols-outlined text-on-surface-variant text-xl">favorite</span>
+                            </button>
                         </div>
                     </div>
 
                     <!-- Product 3 -->
-                    <div class="product-card bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/30 hover:shadow-xl transition-all group">
-                        <div class="aspect-square rounded-xl bg-slate-50 mb-6 overflow-hidden flex items-center justify-center p-8 relative">
-                            <span class="absolute top-3 left-3 bg-primary text-on-primary text-xs font-bold px-3 py-1 rounded-full">Profi-Wahl</span>
-                            <img alt="EliteForce Taktik – Robuster AED mit IP67-Schutzklasse"
-                                 class="product-img w-full h-full object-contain"
+                    <div class="product-card bg-background rounded-2xl p-5 border border-outline-variant/20 relative">
+                        <span class="absolute top-8 left-8 bg-primary text-on-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">Profi</span>
+                        <div class="aspect-[4/3] rounded-xl bg-surface-container-low mb-5 overflow-hidden flex items-center justify-center p-8">
+                            <img alt="EliteForce Taktik" class="product-img w-full h-full object-contain"
                                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqB778HTYx2Tt-wlDddJNsfoTv2rs9cyUziBy9gs0mhEMtPuxqKV31UcH1EXr-4cnS5NZJFSNwohyAhv9uTvfy2kVFH5gPIkF1iJk1lEFgw5fkFthiqjYyqEMHuMizN7-R3jHPI_Y-jXWngWwwHc2JVBIjurqwpJ4Ft8xm78HOa143mePzCfsCs-w6GovpGsoMOXwVS2Aeu3x37jaSH8DkXhvMoA5ta1VkZ9ozMO_x7pXuTmEXr8tGOxhO3mw_nBPhsVpBJRaaZqj9" />
                         </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between items-start">
-                                <h4 class="text-xl font-bold text-on-surface">EliteForce Taktik</h4>
-                                <span class="text-primary font-black text-lg">1.850 €</span>
-                            </div>
-                            <p class="text-sm text-on-surface-variant">Robustes IP67-Gehäuse. Ideal für Baustellen, Sportvereine und maritime Einsätze.</p>
-                            <div class="flex items-center gap-1 text-yellow-500 text-sm">
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="text-on-surface-variant text-xs ml-1">(64)</span>
-                            </div>
-                            <div class="pt-4 flex items-center gap-2">
-                                <button class="flex-1 bg-primary text-on-primary py-3 rounded-lg font-bold hover:bg-primary-container transition-colors">In den Warenkorb</button>
-                                <button class="p-3 bg-surface-container-low text-on-surface rounded-lg hover:bg-surface-container transition-colors" aria-label="Favorit">
-                                    <span class="material-symbols-outlined">favorite</span>
-                                </button>
-                            </div>
+                        <div class="flex justify-between items-start mb-1.5">
+                            <h4 class="text-lg font-bold text-on-surface">EliteForce Taktik</h4>
+                            <span class="text-primary font-black text-lg">1.850 €</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant mb-1">IP67, 10 Jahre Garantie. Für harte Einsätze.</p>
+                        <div class="flex items-center gap-0.5 text-yellow-500 text-xs mb-4">
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="text-on-surface-variant ml-1">64 Bewertungen</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-bold text-sm hover:bg-primary-container transition-colors">In den Warenkorb</button>
+                            <button class="p-3 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors" aria-label="Merken">
+                                <span class="material-symbols-outlined text-on-surface-variant text-xl">favorite</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Comparison Table Section -->
-        <section class="py-24 px-6 bg-surface">
+        <!-- Quick Compare Strip -->
+        <section class="py-16 px-6 bg-surface-container-low border-y border-outline-variant/20">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="text-3xl md:text-4xl font-black text-on-surface mb-4">Produktvergleich auf einen Blick</h2>
-                    <p class="text-on-surface-variant max-w-2xl mx-auto">Finden Sie schnell das richtige Gerät für Ihre Anforderungen.</p>
-                </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/30">
+                    <table class="w-full min-w-[600px]">
                         <thead>
-                            <tr class="bg-surface-container-high">
-                                <th class="text-left p-5 font-bold text-on-surface">Eigenschaft</th>
-                                <th class="p-5 font-bold text-on-surface text-center">ProGuard-X</th>
-                                <th class="p-5 font-bold text-on-surface text-center bg-primary/5 border-x border-primary/10">HeartBeat Home-S</th>
-                                <th class="p-5 font-bold text-on-surface text-center">EliteForce Taktik</th>
+                            <tr class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+                                <th class="text-left py-3 pr-4">Modell</th>
+                                <th class="py-3 px-4">Preis</th>
+                                <th class="py-3 px-4">Schutzklasse</th>
+                                <th class="py-3 px-4">Garantie</th>
+                                <th class="py-3 px-4">Ideal für</th>
+                                <th class="py-3 pl-4"></th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-outline-variant/30">
-                            <tr>
-                                <td class="p-5 text-on-surface-variant font-medium">Preis</td>
-                                <td class="p-5 text-center font-bold text-primary">1.499 €</td>
-                                <td class="p-5 text-center font-bold text-primary bg-primary/5 border-x border-primary/10">995 €</td>
-                                <td class="p-5 text-center font-bold text-primary">1.850 €</td>
+                        <tbody class="text-sm">
+                            <tr class="border-t border-outline-variant/20">
+                                <td class="py-4 pr-4 font-bold">ProGuard-X</td>
+                                <td class="py-4 px-4 text-center text-primary font-bold">1.499 €</td>
+                                <td class="py-4 px-4 text-center">IP55</td>
+                                <td class="py-4 px-4 text-center">8 Jahre</td>
+                                <td class="py-4 px-4 text-center text-on-surface-variant">Büro, Praxis</td>
+                                <td class="py-4 pl-4 text-right"><a href="vergleich.html" class="text-primary font-semibold text-xs hover:underline">Details</a></td>
                             </tr>
-                            <tr class="bg-surface-container-low/50">
-                                <td class="p-5 text-on-surface-variant font-medium">Schutzklasse</td>
-                                <td class="p-5 text-center">IP55</td>
-                                <td class="p-5 text-center bg-primary/5 border-x border-primary/10">IP44</td>
-                                <td class="p-5 text-center font-bold">IP67</td>
+                            <tr class="border-t border-outline-variant/20">
+                                <td class="py-4 pr-4 font-bold">HeartBeat Home-S</td>
+                                <td class="py-4 px-4 text-center text-primary font-bold">995 €</td>
+                                <td class="py-4 px-4 text-center">IP44</td>
+                                <td class="py-4 px-4 text-center">5 Jahre</td>
+                                <td class="py-4 px-4 text-center text-on-surface-variant">Zuhause</td>
+                                <td class="py-4 pl-4 text-right"><a href="vergleich.html" class="text-primary font-semibold text-xs hover:underline">Details</a></td>
                             </tr>
-                            <tr>
-                                <td class="p-5 text-on-surface-variant font-medium">Garantie</td>
-                                <td class="p-5 text-center">8 Jahre</td>
-                                <td class="p-5 text-center bg-primary/5 border-x border-primary/10">5 Jahre</td>
-                                <td class="p-5 text-center">10 Jahre</td>
-                            </tr>
-                            <tr class="bg-surface-container-low/50">
-                                <td class="p-5 text-on-surface-variant font-medium">Kindermodus</td>
-                                <td class="p-5 text-center"><span class="material-symbols-outlined text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span></td>
-                                <td class="p-5 text-center bg-primary/5 border-x border-primary/10"><span class="material-symbols-outlined text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span></td>
-                                <td class="p-5 text-center"><span class="material-symbols-outlined text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span></td>
-                            </tr>
-                            <tr>
-                                <td class="p-5 text-on-surface-variant font-medium">Sprachführung</td>
-                                <td class="p-5 text-center">6 Sprachen</td>
-                                <td class="p-5 text-center bg-primary/5 border-x border-primary/10">3 Sprachen</td>
-                                <td class="p-5 text-center">8 Sprachen</td>
-                            </tr>
-                            <tr class="bg-surface-container-low/50">
-                                <td class="p-5 text-on-surface-variant font-medium">Ideal für</td>
-                                <td class="p-5 text-center text-sm">Büros, Praxen</td>
-                                <td class="p-5 text-center text-sm bg-primary/5 border-x border-primary/10">Zuhause, Familie</td>
-                                <td class="p-5 text-center text-sm">Outdoor, Industrie</td>
+                            <tr class="border-t border-outline-variant/20">
+                                <td class="py-4 pr-4 font-bold">EliteForce Taktik</td>
+                                <td class="py-4 px-4 text-center text-primary font-bold">1.850 €</td>
+                                <td class="py-4 px-4 text-center font-bold">IP67</td>
+                                <td class="py-4 px-4 text-center font-bold">10 Jahre</td>
+                                <td class="py-4 px-4 text-center text-on-surface-variant">Outdoor, Industrie</td>
+                                <td class="py-4 pl-4 text-right"><a href="vergleich.html" class="text-primary font-semibold text-xs hover:underline">Details</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -424,60 +453,60 @@
         </section>
 
         <!-- Testimonials -->
-        <section class="py-24 px-6 bg-surface-container-low">
+        <section class="py-24 px-6 bg-white">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="text-3xl md:text-4xl font-black text-on-surface mb-4">Was unsere Kunden sagen</h2>
-                    <div class="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+                <div class="text-center mb-14 fade-up">
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Kundenstimmen</p>
+                    <h2 class="text-3xl md:text-4xl font-black text-on-surface">Was andere sagen</h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-outline-variant/30">
-                        <div class="flex items-center gap-1 text-yellow-500 mb-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div class="bg-background p-7 rounded-2xl border border-outline-variant/20">
+                        <div class="flex items-center gap-0.5 text-yellow-500 mb-4">
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                         </div>
-                        <p class="text-on-surface-variant leading-relaxed mb-6">"Der ProGuard-X hat in unserem Fitnessstudio bereits einem Mitglied das Leben gerettet. Die Sprachführung war so klar, dass unser Trainer sofort handeln konnte."</p>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-5">"Hat in unserem Fitnessstudio einem Mitglied das Leben gerettet. Die Sprachführung war so klar, dass unser Trainer sofort handeln konnte."</p>
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">MK</div>
+                            <div class="w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xs font-bold">MK</div>
                             <div>
-                                <div class="font-bold text-on-surface text-sm">Marco Keller</div>
-                                <div class="text-xs text-on-surface-variant">Geschäftsführer, FitLife GmbH</div>
+                                <div class="font-semibold text-on-surface text-sm">Marco Keller</div>
+                                <div class="text-xs text-on-surface-variant">GF, FitLife GmbH</div>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-outline-variant/30">
-                        <div class="flex items-center gap-1 text-yellow-500 mb-4">
+                    <div class="bg-background p-7 rounded-2xl border border-outline-variant/20">
+                        <div class="flex items-center gap-0.5 text-yellow-500 mb-4">
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                         </div>
-                        <p class="text-on-surface-variant leading-relaxed mb-6">"Wir haben 45 Standorte mit AED Premium ausgestattet. Das Flotten-Dashboard und der Pro-Care Service sind ein Gamechanger für unsere Compliance-Abteilung."</p>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-5">"45 Standorte, ein Dashboard. Pro-Care nimmt uns die komplette Wartung ab. Unser Compliance-Team ist begeistert."</p>
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary font-bold">SB</div>
+                            <div class="w-9 h-9 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary text-xs font-bold">SB</div>
                             <div>
-                                <div class="font-bold text-on-surface text-sm">Sandra Braun</div>
+                                <div class="font-semibold text-on-surface text-sm">Sandra Braun</div>
                                 <div class="text-xs text-on-surface-variant">HSE-Leiterin, IndustrieWerk AG</div>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-outline-variant/30">
-                        <div class="flex items-center gap-1 text-yellow-500 mb-4">
+                    <div class="bg-background p-7 rounded-2xl border border-outline-variant/20">
+                        <div class="flex items-center gap-0.5 text-yellow-500 mb-4">
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
                         </div>
-                        <p class="text-on-surface-variant leading-relaxed mb-6">"Als Sportverein mit 400 Mitgliedern war der EliteForce Taktik die perfekte Wahl. Hält jedem Wetter stand und die Schulung war erstklassig."</p>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-5">"EliteForce Taktik -- hält jedem Wetter stand. Die Schulung war super und unsere Trainer fühlen sich jetzt sicher."</p>
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center text-secondary font-bold">TH</div>
+                            <div class="w-9 h-9 bg-secondary/10 rounded-full flex items-center justify-center text-secondary text-xs font-bold">TH</div>
                             <div>
-                                <div class="font-bold text-on-surface text-sm">Thomas Huber</div>
+                                <div class="font-semibold text-on-surface text-sm">Thomas Huber</div>
                                 <div class="text-xs text-on-surface-variant">Vorstand, TSV Adlershof</div>
                             </div>
                         </div>
@@ -486,175 +515,164 @@
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section class="py-24 px-6 bg-surface" id="support">
-            <div class="max-w-3xl mx-auto">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="text-3xl md:text-4xl font-black text-on-surface mb-4">Häufig gestellte Fragen</h2>
-                    <p class="text-on-surface-variant">Alles, was Sie über AEDs wissen müssen.</p>
+        <!-- FAQ -->
+        <section class="py-24 px-6 bg-background" id="support">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-14 fade-up">
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">FAQ</p>
+                    <h2 class="text-3xl md:text-4xl font-black text-on-surface">Häufige Fragen</h2>
                 </div>
-                <div class="space-y-4" id="faqContainer">
-                    <div class="faq-item bg-white rounded-xl border border-outline-variant/30 overflow-hidden">
-                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-bold text-on-surface hover:bg-surface-container-low transition-colors">
-                            <span>Darf jeder einen AED benutzen?</span>
-                            <span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+                <div class="space-y-3" id="faqContainer">
+                    <div class="bg-white rounded-xl border border-outline-variant/20 overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-on-surface text-sm hover:bg-surface-container-low/50 transition-colors">
+                            Darf jeder einen AED benutzen?
+                            <span class="material-symbols-outlined faq-icon text-on-surface-variant text-xl transition-transform duration-300">expand_more</span>
                         </button>
-                        <div class="faq-content hidden px-6 pb-6 text-on-surface-variant leading-relaxed">
-                            Ja! AEDs sind so konzipiert, dass sie von Laien bedient werden können. Das Gerät analysiert den Herzrhythmus selbstständig und gibt nur dann einen Schock ab, wenn dies medizinisch notwendig ist. Sprachgesteuerte Anweisungen führen Sie Schritt für Schritt durch den Prozess.
+                        <div class="faq-content px-5 text-sm text-on-surface-variant leading-relaxed">
+                            Ja. AEDs analysieren den Herzrhythmus selbstständig und geben nur bei Bedarf einen Schock ab. Die Sprachführung leitet Sie Schritt für Schritt.
                         </div>
                     </div>
-                    <div class="faq-item bg-white rounded-xl border border-outline-variant/30 overflow-hidden">
-                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-bold text-on-surface hover:bg-surface-container-low transition-colors">
-                            <span>Wie oft muss ein AED gewartet werden?</span>
-                            <span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+                    <div class="bg-white rounded-xl border border-outline-variant/20 overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-on-surface text-sm hover:bg-surface-container-low/50 transition-colors">
+                            Wie oft muss ein AED gewartet werden?
+                            <span class="material-symbols-outlined faq-icon text-on-surface-variant text-xl transition-transform duration-300">expand_more</span>
                         </button>
-                        <div class="faq-content hidden px-6 pb-6 text-on-surface-variant leading-relaxed">
-                            AEDs führen automatische Selbsttests durch. Batterien und Elektroden müssen je nach Modell alle 2-5 Jahre ausgetauscht werden. Mit unserem Pro-Care™ Service übernehmen wir die komplette Wartung und den Austausch für Sie.
+                        <div class="faq-content px-5 text-sm text-on-surface-variant leading-relaxed">
+                            AEDs machen automatische Selbsttests. Batterien und Elektroden wechselt man alle 2-5 Jahre. Mit Pro-Care übernehmen wir das für Sie.
                         </div>
                     </div>
-                    <div class="faq-item bg-white rounded-xl border border-outline-variant/30 overflow-hidden">
-                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-bold text-on-surface hover:bg-surface-container-low transition-colors">
-                            <span>Gibt es eine gesetzliche Pflicht zur AED-Ausstattung?</span>
-                            <span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+                    <div class="bg-white rounded-xl border border-outline-variant/20 overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-on-surface text-sm hover:bg-surface-container-low/50 transition-colors">
+                            Gibt es eine gesetzliche Pflicht?
+                            <span class="material-symbols-outlined faq-icon text-on-surface-variant text-xl transition-transform duration-300">expand_more</span>
                         </button>
-                        <div class="faq-content hidden px-6 pb-6 text-on-surface-variant leading-relaxed">
-                            In Deutschland gibt es keine allgemeine gesetzliche Pflicht. Allerdings empfehlen Berufsgenossenschaften und die DGUV die Ausstattung mit AEDs als Teil der betrieblichen Ersten Hilfe. Viele Branchen haben zudem spezifische Anforderungen.
+                        <div class="faq-content px-5 text-sm text-on-surface-variant leading-relaxed">
+                            Keine allgemeine Pflicht in Deutschland. Aber Berufsgenossenschaften und DGUV empfehlen AEDs als Teil der betrieblichen Ersten Hilfe.
                         </div>
                     </div>
-                    <div class="faq-item bg-white rounded-xl border border-outline-variant/30 overflow-hidden">
-                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-bold text-on-surface hover:bg-surface-container-low transition-colors">
-                            <span>Welche Schulungen bieten Sie an?</span>
-                            <span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+                    <div class="bg-white rounded-xl border border-outline-variant/20 overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-5 text-left font-semibold text-on-surface text-sm hover:bg-surface-container-low/50 transition-colors">
+                            Welche Schulungen gibt es?
+                            <span class="material-symbols-outlined faq-icon text-on-surface-variant text-xl transition-transform duration-300">expand_more</span>
                         </button>
-                        <div class="faq-content hidden px-6 pb-6 text-on-surface-variant leading-relaxed">
-                            Wir bieten zertifizierte HLW/AED-Schulungen, Erste-Hilfe-Kurse und spezifische Betriebsersthelfer-Ausbildungen an. Alle Schulungen können vor Ort in Ihrem Unternehmen durchgeführt werden und sind BG-konform.
+                        <div class="faq-content px-5 text-sm text-on-surface-variant leading-relaxed">
+                            HLW/AED-Kurse, Erste Hilfe und Betriebsersthelfer-Ausbildung. Alles BG-konform, auf Wunsch direkt bei Ihnen vor Ort.
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Newsletter / Trust Banner -->
+        <!-- Newsletter CTA -->
         <section class="py-16 px-6">
-            <div class="max-w-7xl mx-auto bg-primary rounded-[2rem] p-12 flex flex-col md:flex-row items-center justify-between gap-12 text-on-primary relative overflow-hidden">
-                <div class="relative z-10 max-w-xl">
-                    <h2 class="text-3xl md:text-4xl font-black mb-4">Informiert bleiben, Leben retten</h2>
-                    <p class="text-on-primary/80 mb-8">Erhalten Sie monatliche Wartungserinnerungen, Schulungstipps und exklusive Angebote für Ihre Einrichtung.</p>
-                    <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); this.querySelector('button').textContent = 'Angemeldet!'; this.querySelector('button').disabled = true;">
-                        <input class="flex-1 px-6 py-4 rounded-xl text-on-surface border-none focus:ring-2 focus:ring-white" placeholder="Ihre geschäftliche E-Mail" type="email" required />
-                        <button type="submit" class="bg-on-primary text-primary px-8 py-4 rounded-xl font-bold hover:bg-surface transition-all">Newsletter abonnieren</button>
+            <div class="max-w-7xl mx-auto bg-gradient-to-br from-primary via-primary-container to-primary rounded-[2rem] p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-12 text-on-primary relative overflow-hidden">
+                <div class="relative z-10 max-w-lg">
+                    <h2 class="text-3xl md:text-4xl font-black mb-3">Auf dem Laufenden bleiben</h2>
+                    <p class="text-on-primary/70 text-sm mb-6">Wartungstipps, Schulungstermine und exklusive Angebote. Kein Spam.</p>
+                    <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Angemeldet!'; this.querySelector('button').disabled=true;">
+                        <input class="flex-1 px-5 py-3.5 rounded-xl text-on-surface border-none focus:ring-2 focus:ring-white text-sm" placeholder="Ihre E-Mail-Adresse" type="email" required />
+                        <button type="submit" class="bg-white text-primary px-6 py-3.5 rounded-xl font-bold text-sm hover:bg-surface transition-all whitespace-nowrap">Anmelden</button>
                     </form>
                 </div>
-                <div class="relative z-10 grid grid-cols-2 gap-8">
+                <div class="relative z-10 grid grid-cols-2 gap-x-10 gap-y-6">
                     <div class="text-center">
-                        <div class="text-4xl font-black mb-1 counter" data-target="15000">15k+</div>
-                        <div class="text-xs uppercase tracking-widest opacity-80">Verkaufte Einheiten</div>
+                        <div class="text-3xl md:text-4xl font-black">15k+</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-70 mt-1">Geräte im Einsatz</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-4xl font-black mb-1">24/7</div>
-                        <div class="text-xs uppercase tracking-widest opacity-80">Technischer Support</div>
+                        <div class="text-3xl md:text-4xl font-black">24/7</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-70 mt-1">Support</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-4xl font-black mb-1">99%</div>
-                        <div class="text-xs uppercase tracking-widest opacity-80">Verfügbarkeit</div>
+                        <div class="text-3xl md:text-4xl font-black">99%</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-70 mt-1">Verfügbarkeit</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-4xl font-black mb-1">ISO</div>
-                        <div class="text-xs uppercase tracking-widest opacity-80">Zertifiziert</div>
+                        <div class="text-3xl md:text-4xl font-black">ISO</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-70 mt-1">Zertifiziert</div>
                     </div>
                 </div>
-                <div class="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="absolute -top-32 -right-32 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-black/5 rounded-full blur-3xl"></div>
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->
-    <footer class="w-full mt-auto bg-slate-50 border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="text-lg font-black text-primary uppercase tracking-tight mb-4">AED Premium</div>
-                    <p class="text-xs text-slate-500 max-w-xs leading-relaxed">
-                        Ihr engagierter Partner für kardiale Sicherheit. Medizinische Ausrüstung für jede Umgebung.
-                    </p>
+    <footer class="bg-inverse-surface text-white/80">
+        <div class="max-w-7xl mx-auto px-6 py-14">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-base" style="font-variation-settings: 'FILL' 1">favorite</span>
+                        </div>
+                        <span class="text-lg font-black text-white">AED Premium</span>
+                    </div>
+                    <p class="text-xs text-white/50 leading-relaxed max-w-[200px]">Ihr Partner für kardiale Sicherheit.</p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-sm text-slate-900 mb-4">Shop</h4>
-                    <nav class="flex flex-col gap-2">
-                        <a class="text-xs text-slate-500 hover:text-primary transition-all" href="#produkte">Alle Produkte</a>
-                        <a class="text-xs text-slate-500 hover:text-primary transition-all" href="kaufberater.html">Kaufberater</a>
-                        <a class="text-xs text-slate-500 hover:text-primary transition-all" href="#">Zubehör</a>
-                        <a class="text-xs text-slate-500 hover:text-primary transition-all" href="#">Ersatzteile</a>
+                    <h4 class="font-bold text-xs text-white uppercase tracking-wider mb-4">Shop</h4>
+                    <nav class="flex flex-col gap-2.5">
+                        <a class="text-xs text-white/50 hover:text-white transition-colors" href="#produkte">Alle Geräte</a>
+                        <a class="text-xs text-white/50 hover:text-white transition-colors" href="kaufberater.html">Kaufberater</a>
+                        <a class="text-xs text-white/50 hover:text-white transition-colors" href="vergleich.html">Vergleich</a>
                     </nav>
                 </div>
                 <div>
-                    <h4 class="font-bold text-sm text-slate-900 mb-4">Service</h4>
-                    <nav class="flex flex-col gap-2">
-                        <a class="text-xs text-slate-500 hover:text-primary transition-all" href="b2b.html">B2B-Lösungen</a>
-                        <a class="text-xs text-slate-500 hover:text-primary transition-all" href="#">Schulungen</a>
-                        <a class="text-xs text-slate-500 hover:text-primary transition-all" href="#">Pro-Care Wartung</a>
-                        <a class="text-xs text-slate-500 hover:text-primary transition-all" href="#">Flottenmanagement</a>
+                    <h4 class="font-bold text-xs text-white uppercase tracking-wider mb-4">Service</h4>
+                    <nav class="flex flex-col gap-2.5">
+                        <a class="text-xs text-white/50 hover:text-white transition-colors" href="b2b.html">B2B</a>
+                        <a class="text-xs text-white/50 hover:text-white transition-colors" href="#">Schulungen</a>
+                        <a class="text-xs text-white/50 hover:text-white transition-colors" href="#">Pro-Care</a>
                     </nav>
                 </div>
                 <div>
-                    <h4 class="font-bold text-sm text-slate-900 mb-4">Kontakt</h4>
-                    <nav class="flex flex-col gap-2">
-                        <a class="text-xs text-slate-500 hover:text-primary transition-all" href="tel:+4930123456789">+49 (0)30 1234 567 89</a>
-                        <a class="text-xs text-slate-500 hover:text-primary transition-all" href="mailto:info@aed-premium.de">info@aed-premium.de</a>
-                        <span class="text-xs text-slate-500">Mo-Fr: 8:00 - 18:00 Uhr</span>
+                    <h4 class="font-bold text-xs text-white uppercase tracking-wider mb-4">Kontakt</h4>
+                    <nav class="flex flex-col gap-2.5">
+                        <a class="text-xs text-white/50 hover:text-white transition-colors" href="tel:+4930123456789">+49 30 1234 567 89</a>
+                        <a class="text-xs text-white/50 hover:text-white transition-colors" href="mailto:info@aed-premium.de">info@aed-premium.de</a>
+                        <span class="text-xs text-white/50">Mo-Fr 8-18 Uhr</span>
                     </nav>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-200 gap-4">
-                <div class="text-xs text-slate-500">© 2026 AED Premium. Alle Rechte vorbehalten.</div>
-                <nav class="flex flex-wrap justify-center gap-6 text-xs text-slate-500">
-                    <a class="hover:text-primary transition-all hover:underline" href="#">Datenschutzrichtlinie</a>
-                    <a class="hover:text-primary transition-all hover:underline" href="#">Nutzungsbedingungen</a>
-                    <a class="hover:text-primary transition-all hover:underline" href="#">Impressum</a>
-                    <a class="hover:text-primary transition-all hover:underline" href="#">Widerrufsbelehrung</a>
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 gap-4">
+                <span class="text-xs text-white/40">© 2026 AED Premium. Alle Rechte vorbehalten.</span>
+                <nav class="flex gap-6 text-xs text-white/40">
+                    <a class="hover:text-white/70 transition-colors" href="#">Datenschutz</a>
+                    <a class="hover:text-white/70 transition-colors" href="#">AGB</a>
+                    <a class="hover:text-white/70 transition-colors" href="#">Impressum</a>
+                    <a class="hover:text-white/70 transition-colors" href="#">Widerruf</a>
                 </nav>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const menuClose = document.getElementById('menuClose');
-        const mobileMenu = document.getElementById('mobileMenu');
+        // Mobile menu
+        document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+        document.getElementById('menuClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
 
-        menuToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
-        menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
-
-        // FAQ Accordion
+        // FAQ accordion
         document.querySelectorAll('.faq-toggle').forEach(btn => {
             btn.addEventListener('click', () => {
                 const content = btn.nextElementSibling;
                 const icon = btn.querySelector('.faq-icon');
-                const isOpen = !content.classList.contains('hidden');
-
-                // Close all
-                document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+                const wasOpen = content.classList.contains('open');
+                document.querySelectorAll('.faq-content').forEach(c => c.classList.remove('open'));
                 document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = '');
-
-                if (!isOpen) {
-                    content.classList.remove('hidden');
+                if (!wasOpen) {
+                    content.classList.add('open');
                     icon.style.transform = 'rotate(180deg)';
                 }
             });
         });
 
-        // Fade-in on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
+        // Scroll animations
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
     </script>
 </body>
 </html>
