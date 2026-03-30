@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Blog & Ratgeber | AED Premium</title>
+    <meta name="description" content="Wissenswertes rund um AED Defibrillatoren, Erste Hilfe und Herzsicherheit. Tipps, Ratgeber und aktuelle News." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant":"#5c403d","primary":"#a60012","primary-container":"#cb2426",
+                        "outline-variant":"#e4bdb9","on-primary":"#ffffff","surface":"#fff8f7",
+                        "surface-container":"#ffe9e6","background":"#fff8f7","surface-container-low":"#fff0ef",
+                        "surface-container-high":"#ffe2de","on-surface":"#271716","on-background":"#271716",
+                        "tertiary":"#00567f","inverse-surface":"#3e2c2a","primary-fixed-dim":"#ffb4ac",
+                        "on-tertiary":"#ffffff","tertiary-container":"#006fa3","on-tertiary-container":"#d8ecff"
+                    },
+                    fontFamily: { "body": ["Inter", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        body { font-family: 'Inter', sans-serif; }
+        .blog-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -8px rgba(0,0,0,0.08); }
+        .blog-card:hover .blog-img { transform: scale(1.05); }
+        .blog-img { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+
+    <!-- Top Bar -->
+    <div class="hidden md:block bg-inverse-surface text-white/90 text-xs fixed top-0 w-full z-[51]">
+        <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">local_shipping</span> Gratis Versand ab 500 €</span>
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">verified</span> Zertifizierte Medizinprodukte</span>
+            </div>
+            <a href="tel:+4930123456789" class="flex items-center gap-1.5 hover:text-white"><span class="material-symbols-outlined text-[13px]">phone</span> +49 30 1234 567 89</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 md:top-[32px] w-full z-50 bg-white/95 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16 md:h-[68px]">
+                <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+                    <img src="logo-icon.svg" alt="AED Premium" class="w-9 h-9" />
+                    <span class="text-[22px] font-black tracking-tight"><span class="text-on-surface">AED</span><span class="text-primary"> Premium</span></span>
+                </a>
+                <nav class="hidden md:flex items-center h-full gap-1">
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="index.html">Shop</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="b2b.html">Unternehmen</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="kaufberater.html">Beratung</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="index.html#support">Hilfe</a>
+                </nav>
+                <div class="flex items-center gap-0.5">
+                    <a href="warenkorb.html" class="relative p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary">
+                        <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+                    </a>
+                    <a href="konto.html" class="p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary">
+                        <span class="material-symbols-outlined text-[22px]">person</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 md:pt-[120px] pb-20 px-6 flex-grow">
+        <div class="max-w-7xl mx-auto">
+
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Wissen & Ratgeber</p>
+                <h1 class="text-4xl md:text-5xl font-black text-on-surface tracking-tight mb-4">Der AED Premium Blog</h1>
+                <p class="text-on-surface-variant text-base max-w-xl mx-auto">Praxiswissen rund um Defibrillatoren, Erste Hilfe und Herzsicherheit im Alltag.</p>
+            </div>
+
+            <!-- Featured Article -->
+            <a href="blog-aed-am-arbeitsplatz.html" class="blog-card block bg-white rounded-2xl border border-outline-variant/20 overflow-hidden mb-12 md:flex">
+                <div class="md:w-1/2 h-64 md:h-auto overflow-hidden bg-primary/5">
+                    <img alt="AED am Arbeitsplatz" class="blog-img w-full h-full object-cover"
+                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEciFqPmjAYLeWocZW5rH9YKJ90HXzG57KlYu8gR2Gvzpn-SIYDc18Q29wiFTLHsW-snFxrLzu24Wsom7-Ld4G0ohd4QWSj-UKxy3WDokpz7ZYvPZYyijUYmVZ5uuWHex9Rj5UEE2DvH2BuhCBMfWIYX0ss9HP81G3US3B_tIvqgTi5S06fV_pdgH3pn47zOOgI1-w1pC5sz6Uj7i2Jt9G60GAaqgrkL51PuYNCZUeyL0n-a-FW9qG7SAWFezEVcbRfuIMfRkdKH0p" />
+                </div>
+                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded-full uppercase tracking-wider">Ratgeber</span>
+                        <span class="text-xs text-on-surface-variant">28. März 2026</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-black text-on-surface mb-3 leading-tight">AED am Arbeitsplatz: Was Unternehmen wissen müssen</h2>
+                    <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Welche Pflichten haben Arbeitgeber? Wo sollte ein AED hängen? Und wie schulen Sie Ihr Team? Ein kompakter Leitfaden.</p>
+                    <span class="text-primary font-semibold text-sm flex items-center gap-1">
+                        Weiterlesen <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Article Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Article 2 -->
+                <a href="blog-erste-hilfe-herzstillstand.html" class="blog-card bg-white rounded-2xl border border-outline-variant/20 overflow-hidden">
+                    <div class="h-48 overflow-hidden bg-tertiary/5">
+                        <img alt="Erste Hilfe bei Herzstillstand" class="blog-img w-full h-full object-cover"
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ-9NoGvt4wK-UUJY1V8ZS3kenOzx9MNGnczsU7E4RirFpYUZfD4NSD2azNyiUBS3kzNmrgCjKBF-XQyxsjHUSHIRZcEOVOpAEnB49gQV9k-KxCzN8dSYmVLoBn_wzOoTX0cBCqZB6N4Nk5jlv2-JEOTJr6RMaRjv2ByEWbokYPynzrPg7GWpEmmrxtET475SnH-0wTaSWw_FXZkti6yczIruEX2JaxUZqNXw9ttlFUIBVep_2-GnN5OW6_dQ7LRwhldVjj76qN30I" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-bold rounded-full uppercase tracking-wider">Erste Hilfe</span>
+                            <span class="text-xs text-on-surface-variant">15. März 2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-on-surface mb-2 leading-snug">Erste Hilfe bei Herzstillstand: Die 5 wichtigsten Schritte</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">Jede Minute zählt. So handeln Sie richtig, bis der Rettungsdienst eintrifft.</p>
+                    </div>
+                </a>
+
+                <!-- Placeholder articles -->
+                <div class="bg-white rounded-2xl border border-outline-variant/20 overflow-hidden opacity-60">
+                    <div class="h-48 bg-surface-container-high flex items-center justify-center">
+                        <span class="material-symbols-outlined text-4xl text-on-surface-variant/30">article</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="px-3 py-1 bg-surface-container text-on-surface-variant text-[10px] font-bold rounded-full uppercase tracking-wider">Technik</span>
+                            <span class="text-xs text-on-surface-variant">Demnächst</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-on-surface mb-2">IP-Schutzklassen erklärt: IP44 bis IP67</h3>
+                        <p class="text-sm text-on-surface-variant">Was die Zahlen bedeuten und welcher Schutz für Ihren Einsatzort sinnvoll ist.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-outline-variant/20 overflow-hidden opacity-60">
+                    <div class="h-48 bg-surface-container-high flex items-center justify-center">
+                        <span class="material-symbols-outlined text-4xl text-on-surface-variant/30">article</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="px-3 py-1 bg-surface-container text-on-surface-variant text-[10px] font-bold rounded-full uppercase tracking-wider">Recht</span>
+                            <span class="text-xs text-on-surface-variant">Demnächst</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-on-surface mb-2">AED-Pflicht in Deutschland? Rechtslage 2026</h3>
+                        <p class="text-sm text-on-surface-variant">Ein Überblick über aktuelle Vorschriften, Empfehlungen und Förderungen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter CTA -->
+            <div class="mt-16 bg-inverse-surface rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-white">
+                <div>
+                    <h3 class="text-2xl font-black mb-2">Neue Artikel direkt ins Postfach</h3>
+                    <p class="text-white/60 text-sm">Monatlich die besten Tipps zu Herzsicherheit und Erste Hilfe.</p>
+                </div>
+                <form class="flex gap-3 w-full md:w-auto" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Angemeldet!';">
+                    <input class="flex-1 md:w-64 px-5 py-3 rounded-xl text-on-surface border-none focus:ring-2 focus:ring-primary text-sm" placeholder="Ihre E-Mail" type="email" required />
+                    <button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary-container transition-colors whitespace-nowrap">Abonnieren</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-inverse-surface text-white/80 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <span class="text-sm font-black text-white">AED Premium</span>
+                <nav class="flex gap-6 text-xs text-white/40">
+                    <a class="hover:text-white/70" href="#">Datenschutz</a>
+                    <a class="hover:text-white/70" href="#">AGB</a>
+                    <a class="hover:text-white/70" href="#">Impressum</a>
+                </nav>
+                <span class="text-xs text-white/40">© 2026 AED Premium</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

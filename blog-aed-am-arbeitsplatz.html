@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AED am Arbeitsplatz: Was Unternehmen wissen müssen | AED Premium Blog</title>
+    <meta name="description" content="Leitfaden für Unternehmen: AED-Pflichten, optimale Standorte, Schulungen und Wartung. Alles Wichtige auf einen Blick." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant":"#5c403d","primary":"#a60012","primary-container":"#cb2426",
+                        "outline-variant":"#e4bdb9","on-primary":"#ffffff","surface":"#fff8f7",
+                        "surface-container":"#ffe9e6","background":"#fff8f7","surface-container-low":"#fff0ef",
+                        "surface-container-high":"#ffe2de","on-surface":"#271716","on-background":"#271716",
+                        "tertiary":"#00567f","inverse-surface":"#3e2c2a","primary-fixed-dim":"#ffb4ac"
+                    },
+                    fontFamily: { "body": ["Inter", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        body { font-family: 'Inter', sans-serif; }
+        .prose h2 { font-size: 1.5rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #271716; }
+        .prose h3 { font-size: 1.125rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #271716; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #5c403d; font-size: 0.9375rem; }
+        .prose ul { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose li { margin-bottom: 0.5rem; line-height: 1.7; color: #5c403d; font-size: 0.9375rem; }
+        .prose blockquote { border-left: 3px solid #a60012; padding: 1rem 1.5rem; background: #fff0ef; border-radius: 0 0.75rem 0.75rem 0; margin: 1.5rem 0; }
+        .prose blockquote p { margin-bottom: 0; font-style: italic; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+
+    <!-- Top Bar -->
+    <div class="hidden md:block bg-inverse-surface text-white/90 text-xs fixed top-0 w-full z-[51]">
+        <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">local_shipping</span> Gratis Versand ab 500 €</span>
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">verified</span> Zertifizierte Medizinprodukte</span>
+            </div>
+            <a href="tel:+4930123456789" class="flex items-center gap-1.5 hover:text-white"><span class="material-symbols-outlined text-[13px]">phone</span> +49 30 1234 567 89</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 md:top-[32px] w-full z-50 bg-white/95 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16 md:h-[68px]">
+                <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+                    <img src="logo-icon.svg" alt="AED Premium" class="w-9 h-9" />
+                    <span class="text-[22px] font-black tracking-tight"><span class="text-on-surface">AED</span><span class="text-primary"> Premium</span></span>
+                </a>
+                <nav class="hidden md:flex items-center h-full gap-1">
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="index.html">Shop</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="b2b.html">Unternehmen</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="kaufberater.html">Beratung</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="index.html#support">Hilfe</a>
+                </nav>
+                <div class="flex items-center gap-0.5">
+                    <a href="warenkorb.html" class="relative p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary">
+                        <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+                    </a>
+                    <a href="konto.html" class="p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary">
+                        <span class="material-symbols-outlined text-[22px]">person</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 md:pt-[120px] pb-20 flex-grow">
+
+        <!-- Hero Image -->
+        <div class="w-full h-64 md:h-96 overflow-hidden bg-surface-container-high">
+            <img alt="Modernes Büro mit AED-Ausstattung" class="w-full h-full object-cover"
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEciFqPmjAYLeWocZW5rH9YKJ90HXzG57KlYu8gR2Gvzpn-SIYDc18Q29wiFTLHsW-snFxrLzu24Wsom7-Ld4G0ohd4QWSj-UKxy3WDokpz7ZYvPZYyijUYmVZ5uuWHex9Rj5UEE2DvH2BuhCBMfWIYX0ss9HP81G3US3B_tIvqgTi5S06fV_pdgH3pn47zOOgI1-w1pC5sz6Uj7i2Jt9G60GAaqgrkL51PuYNCZUeyL0n-a-FW9qG7SAWFezEVcbRfuIMfRkdKH0p" />
+        </div>
+
+        <article class="max-w-3xl mx-auto px-6 -mt-16 relative z-10">
+
+            <!-- Article Header Card -->
+            <div class="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-outline-variant/20 mb-10">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded-full uppercase tracking-wider">Ratgeber</span>
+                    <span class="text-xs text-on-surface-variant">28. März 2026 · 6 Min. Lesezeit</span>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-black text-on-surface leading-tight mb-4">AED am Arbeitsplatz: Was Unternehmen wissen müssen</h1>
+                <p class="text-on-surface-variant leading-relaxed">In Deutschland erleiden jährlich über 65.000 Menschen einen plötzlichen Herzstillstand. Viele davon am Arbeitsplatz. Ein AED kann die Überlebenschance verdreifachen -- wenn er rechtzeitig zum Einsatz kommt.</p>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose max-w-none">
+
+                <h2>Warum ein AED im Büro sinnvoll ist</h2>
+                <p>Die meisten Menschen verbringen acht oder mehr Stunden am Tag bei der Arbeit. Statistisch ist die Wahrscheinlichkeit, dass ein Herznotfall genau dort passiert, also hoch. Der Rettungsdienst braucht im Schnitt 8-12 Minuten. Jede Minute ohne Defibrillation senkt die Überlebenschance um 10%.</p>
+                <p>Ein AED schließt diese Lücke. Moderne Geräte sind so einfach, dass auch Laien sie sofort bedienen können. Das Gerät analysiert den Herzrhythmus, gibt klare Sprachanweisungen und entscheidet selbst, ob ein Schock nötig ist.</p>
+
+                <blockquote>
+                    <p>"Mit einem AED und geschulten Ersthelfern wird Ihr Unternehmen zum sicheren Ort. Das ist nicht nur eine Frage der Fürsorge, sondern auch der Haftung."</p>
+                </blockquote>
+
+                <h2>Rechtliche Grundlagen</h2>
+                <p>Eine allgemeine AED-Pflicht gibt es in Deutschland noch nicht. Aber: Die DGUV (Deutsche Gesetzliche Unfallversicherung) empfiehlt AEDs ausdrücklich als Teil der betrieblichen Ersten Hilfe. Berufsgenossenschaften sehen die Anschaffung zunehmend als Standard.</p>
+                <p>Wichtig zu wissen:</p>
+                <ul>
+                    <li>AEDs gelten als Medizinprodukte und unterliegen der MPBetreibV (Medizinprodukte-Betreiberverordnung)</li>
+                    <li>Regelmäßige Funktionsprüfungen sind Pflicht</li>
+                    <li>Einweisungen der Mitarbeiter sind empfohlen, aber nicht gesetzlich vorgeschrieben</li>
+                    <li>Die Kosten sind steuerlich absetzbar</li>
+                </ul>
+
+                <h2>Den richtigen Standort wählen</h2>
+                <p>Ein AED bringt nur etwas, wenn er schnell erreichbar ist. Die Faustregel: Innerhalb von 3 Minuten muss das Gerät am Einsatzort sein.</p>
+
+                <h3>Ideale Standorte</h3>
+                <ul>
+                    <li><strong>Eingangsbereich / Empfang</strong> -- zentral, für alle sichtbar</li>
+                    <li><strong>Kantine / Gemeinschaftsräume</strong> -- wo viele Menschen zusammenkommen</li>
+                    <li><strong>Jede Etage</strong> -- bei größeren Gebäuden</li>
+                    <li><strong>Fitnessbereiche</strong> -- erhöhtes Risiko bei körperlicher Belastung</li>
+                    <li><strong>Produktionshallen</strong> -- weit von medizinischer Versorgung entfernt</li>
+                </ul>
+                <p>Kennzeichnen Sie den Standort mit dem grünen AED-Piktogramm nach ISO 7010. So findet im Notfall jeder das Gerät.</p>
+
+                <h2>Team schulen</h2>
+                <p>Zwar kann jeder einen AED bedienen -- aber geschulte Mitarbeiter reagieren schneller und sicherer. Wir empfehlen:</p>
+                <ul>
+                    <li><strong>Basisschulung</strong> (2 Stunden) -- AED-Einweisung und Herz-Lungen-Wiederbelebung</li>
+                    <li><strong>Ersthelfer-Auffrischung</strong> (jährlich) -- damit das Wissen frisch bleibt</li>
+                    <li><strong>Notfallübungen</strong> -- wie bei Brandschutzübungen: Praxis schafft Sicherheit</li>
+                </ul>
+
+                <h2>Wartung nicht vergessen</h2>
+                <p>Ein AED macht regelmäßig automatische Selbsttests. Trotzdem müssen Sie aktiv bleiben:</p>
+                <ul>
+                    <li>Batterie prüfen (Lebensdauer: 2-5 Jahre je nach Modell)</li>
+                    <li>Elektroden-Pads haben ein Verfallsdatum</li>
+                    <li>Sicherheitstechnische Kontrolle (STK) mindestens alle zwei Jahre</li>
+                </ul>
+                <p>Unser <strong>Pro-Care™ Service</strong> nimmt Ihnen das ab: automatischer Austausch, Erinnerungen und jährliche Vor-Ort-Prüfung.</p>
+
+                <h2>Fazit</h2>
+                <p>Ein AED am Arbeitsplatz ist eine kleine Investition mit potentiell lebensrettender Wirkung. Die Technik ist ausgereift, die Bedienung kinderleicht und die Kosten überschaubar. Warten Sie nicht, bis es zu spät ist.</p>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-12 bg-primary rounded-2xl p-8 text-on-primary text-center">
+                <h3 class="text-2xl font-black mb-3">Bereit für mehr Sicherheit?</h3>
+                <p class="text-on-primary/70 text-sm mb-6 max-w-md mx-auto">Finden Sie den passenden AED für Ihren Arbeitsplatz oder lassen Sie sich persönlich beraten.</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="kaufberater.html" class="bg-white text-primary px-6 py-3 rounded-xl font-bold text-sm hover:bg-surface transition-colors">Zum Kaufberater</a>
+                    <a href="b2b.html#inquiry" class="border-2 border-white text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-white hover:text-primary transition-all">Angebot anfordern</a>
+                </div>
+            </div>
+
+            <!-- Back to Blog -->
+            <div class="mt-10 text-center">
+                <a href="blog.html" class="text-primary font-semibold text-sm flex items-center justify-center gap-1 hover:gap-2 transition-all">
+                    <span class="material-symbols-outlined text-lg">arrow_back</span> Zurück zum Blog
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-inverse-surface text-white/80 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <span class="text-sm font-black text-white">AED Premium</span>
+                <nav class="flex gap-6 text-xs text-white/40">
+                    <a class="hover:text-white/70" href="#">Datenschutz</a>
+                    <a class="hover:text-white/70" href="#">AGB</a>
+                    <a class="hover:text-white/70" href="#">Impressum</a>
+                </nav>
+                <span class="text-xs text-white/40">© 2026 AED Premium</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

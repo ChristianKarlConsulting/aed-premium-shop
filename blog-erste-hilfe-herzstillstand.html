@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Erste Hilfe bei Herzstillstand: Die 5 wichtigsten Schritte | AED Premium Blog</title>
+    <meta name="description" content="Herzstillstand erkennen und richtig handeln. 5 klare Schritte, die jeder kennen sollte -- mit und ohne AED." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant":"#5c403d","primary":"#a60012","primary-container":"#cb2426",
+                        "outline-variant":"#e4bdb9","on-primary":"#ffffff","surface":"#fff8f7",
+                        "surface-container":"#ffe9e6","background":"#fff8f7","surface-container-low":"#fff0ef",
+                        "surface-container-high":"#ffe2de","on-surface":"#271716","on-background":"#271716",
+                        "tertiary":"#00567f","inverse-surface":"#3e2c2a","primary-fixed-dim":"#ffb4ac",
+                        "on-tertiary":"#ffffff","tertiary-container":"#006fa3"
+                    },
+                    fontFamily: { "body": ["Inter", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        body { font-family: 'Inter', sans-serif; }
+        .prose h2 { font-size: 1.5rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #271716; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #5c403d; font-size: 0.9375rem; }
+        .prose ul { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose li { margin-bottom: 0.5rem; line-height: 1.7; color: #5c403d; font-size: 0.9375rem; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+
+    <!-- Top Bar -->
+    <div class="hidden md:block bg-inverse-surface text-white/90 text-xs fixed top-0 w-full z-[51]">
+        <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">local_shipping</span> Gratis Versand ab 500 €</span>
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">verified</span> Zertifizierte Medizinprodukte</span>
+            </div>
+            <a href="tel:+4930123456789" class="flex items-center gap-1.5 hover:text-white"><span class="material-symbols-outlined text-[13px]">phone</span> +49 30 1234 567 89</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 md:top-[32px] w-full z-50 bg-white/95 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16 md:h-[68px]">
+                <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+                    <img src="logo-icon.svg" alt="AED Premium" class="w-9 h-9" />
+                    <span class="text-[22px] font-black tracking-tight"><span class="text-on-surface">AED</span><span class="text-primary"> Premium</span></span>
+                </a>
+                <nav class="hidden md:flex items-center h-full gap-1">
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="index.html">Shop</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="b2b.html">Unternehmen</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="kaufberater.html">Beratung</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="index.html#support">Hilfe</a>
+                </nav>
+                <div class="flex items-center gap-0.5">
+                    <a href="warenkorb.html" class="relative p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary">
+                        <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+                    </a>
+                    <a href="konto.html" class="p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary">
+                        <span class="material-symbols-outlined text-[22px]">person</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 md:pt-[120px] pb-20 flex-grow">
+
+        <!-- Hero Image -->
+        <div class="w-full h-64 md:h-96 overflow-hidden bg-tertiary/5">
+            <img alt="Erste-Hilfe-Schulung mit AED" class="w-full h-full object-cover"
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ-9NoGvt4wK-UUJY1V8ZS3kenOzx9MNGnczsU7E4RirFpYUZfD4NSD2azNyiUBS3kzNmrgCjKBF-XQyxsjHUSHIRZcEOVOpAEnB49gQV9k-KxCzN8dSYmVLoBn_wzOoTX0cBCqZB6N4Nk5jlv2-JEOTJr6RMaRjv2ByEWbokYPynzrPg7GWpEmmrxtET475SnH-0wTaSWw_FXZkti6yczIruEX2JaxUZqNXw9ttlFUIBVep_2-GnN5OW6_dQ7LRwhldVjj76qN30I" />
+        </div>
+
+        <article class="max-w-3xl mx-auto px-6 -mt-16 relative z-10">
+
+            <!-- Article Header -->
+            <div class="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-outline-variant/20 mb-10">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-bold rounded-full uppercase tracking-wider">Erste Hilfe</span>
+                    <span class="text-xs text-on-surface-variant">15. März 2026 · 5 Min. Lesezeit</span>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-black text-on-surface leading-tight mb-4">Erste Hilfe bei Herzstillstand: Die 5 wichtigsten Schritte</h1>
+                <p class="text-on-surface-variant leading-relaxed">120.000 Menschen erleiden in Deutschland jährlich einen Herzstillstand außerhalb des Krankenhauses. Die meisten davon zuhause, bei der Arbeit oder beim Sport. Was tun, wenn es passiert?</p>
+            </div>
+
+            <!-- Content -->
+            <div class="prose max-w-none">
+
+                <p>Keine Panik. Sie müssen kein Arzt sein, um ein Leben zu retten. Fünf klare Schritte reichen aus -- und jede Sekunde zählt.</p>
+
+                <!-- Step 1 -->
+                <div class="not-prose my-8 bg-white rounded-2xl border border-outline-variant/20 p-6 flex gap-5">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex-shrink-0 flex items-center justify-center text-on-primary text-xl font-black">1</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-on-surface mb-2">Erkennen und ansprechen</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed mb-0">Sprechen Sie die Person laut an. Fassen Sie sie an den Schultern. Reagiert sie nicht und atmet nicht normal? Dann handeln Sie sofort.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="not-prose my-8 bg-white rounded-2xl border border-outline-variant/20 p-6 flex gap-5">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex-shrink-0 flex items-center justify-center text-on-primary text-xl font-black">2</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-on-surface mb-2">Notruf 112 wählen</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed mb-0">Rufen Sie sofort den Rettungsdienst. Wenn möglich, bitten Sie eine andere Person, den Anruf zu übernehmen, damit Sie mit der Herzdruckmassage beginnen können. Die Leitstelle leitet Sie am Telefon an.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="not-prose my-8 bg-primary/5 rounded-2xl border border-primary/20 p-6 flex gap-5">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex-shrink-0 flex items-center justify-center text-on-primary text-xl font-black">3</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-on-surface mb-2">Herzdruckmassage starten</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed mb-2">Legen Sie den Ballen einer Hand auf die Mitte des Brustkorbs, die zweite Hand darauf. Drücken Sie fest und schnell:</p>
+                        <ul class="text-sm text-on-surface-variant space-y-1 pl-4">
+                            <li><strong>Tiefe:</strong> 5-6 cm</li>
+                            <li><strong>Tempo:</strong> 100-120 Mal pro Minute (Rhythmus des Songs "Stayin' Alive")</li>
+                            <li><strong>Nicht aufhören</strong>, bis der Rettungsdienst da ist oder der AED bereit ist</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="not-prose my-8 bg-primary/5 rounded-2xl border border-primary/20 p-6 flex gap-5">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex-shrink-0 flex items-center justify-center text-on-primary text-xl font-black">4</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-on-surface mb-2">AED holen und anschließen</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed mb-2">Schicken Sie jemanden zum nächsten AED. Sobald er da ist:</p>
+                        <ul class="text-sm text-on-surface-variant space-y-1 pl-4">
+                            <li>Gerät einschalten -- es führt Sie per Sprachansage</li>
+                            <li>Elektroden auf den nackten Brustkorb kleben (Bilder auf den Pads zeigen wo)</li>
+                            <li>Niemanden berühren, wenn das Gerät analysiert</li>
+                            <li>Schock nur auslösen, wenn das Gerät es anweist</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="not-prose my-8 bg-white rounded-2xl border border-outline-variant/20 p-6 flex gap-5">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex-shrink-0 flex items-center justify-center text-on-primary text-xl font-black">5</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-on-surface mb-2">Weiter drücken</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed mb-0">Nach dem Schock sofort weiter mit der Herzdruckmassage. Hören Sie nicht auf, bis der Rettungsdienst übernimmt oder die Person wieder normal atmet. Wechseln Sie sich ab, wenn Sie zu zweit sind.</p>
+                    </div>
+                </div>
+
+                <h2>Häufige Ängste -- und warum sie unbegründet sind</h2>
+                <p><strong>"Ich mache etwas falsch."</strong> -- Das Einzige, was Sie falsch machen können, ist nichts zu tun. Jede Herzdruckmassage ist besser als keine. Und der AED gibt nur dann einen Schock, wenn er medizinisch notwendig ist.</p>
+                <p><strong>"Ich breche eine Rippe."</strong> -- Das kann passieren und ist bei einer Reanimation normal. Eine gebrochene Rippe heilt. Ein Herzstillstand ohne Hilfe nicht.</p>
+                <p><strong>"Ich bin kein Arzt."</strong> -- Müssen Sie nicht sein. AEDs sind für Laien gebaut. Die Sprachführung ist so klar, dass selbst Erstanwender sofort loslegen können.</p>
+
+                <h2>Warum ein AED den Unterschied macht</h2>
+                <p>Herzdruckmassage allein hält den Kreislauf am Laufen. Aber das Herz wieder in den richtigen Rhythmus bringen -- das kann nur ein Defibrillator. Je schneller der erste Schock kommt, desto höher die Überlebenschance:</p>
+
+                <div class="not-prose my-8 grid grid-cols-3 gap-4 text-center">
+                    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                        <div class="text-2xl font-black text-green-700">70%</div>
+                        <div class="text-xs text-green-800 font-medium mt-1">Innerhalb 3 Min.</div>
+                    </div>
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+                        <div class="text-2xl font-black text-yellow-700">30%</div>
+                        <div class="text-xs text-yellow-800 font-medium mt-1">Nach 5 Min.</div>
+                    </div>
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+                        <div class="text-2xl font-black text-red-700">5%</div>
+                        <div class="text-xs text-red-800 font-medium mt-1">Nach 10 Min.</div>
+                    </div>
+                </div>
+
+                <p>Die Zahlen sprechen für sich: Ein AED in der Nähe kann die Überlebenschance um das Drei- bis Fünffache steigern.</p>
+
+                <h2>Zusammenfassung</h2>
+                <ul>
+                    <li><strong>Erkennen</strong> -- Nicht ansprechbar, keine normale Atmung</li>
+                    <li><strong>Rufen</strong> -- 112 anrufen</li>
+                    <li><strong>Drücken</strong> -- Herzdruckmassage, 100-120x pro Minute</li>
+                    <li><strong>Schocken</strong> -- AED holen und den Anweisungen folgen</li>
+                    <li><strong>Weiter drücken</strong> -- Bis der Rettungsdienst da ist</li>
+                </ul>
+                <p>Merken Sie sich: <strong>Prüfen. Rufen. Drücken. Schocken.</strong> Diese vier Worte können Leben retten.</p>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-12 bg-tertiary-container rounded-2xl p-8 text-on-tertiary-container text-center">
+                <h3 class="text-2xl font-black mb-3">Schulung buchen</h3>
+                <p class="text-on-tertiary-container/70 text-sm mb-6 max-w-md mx-auto">Üben Sie die Schritte unter Anleitung. Unsere zertifizierten Trainer kommen zu Ihnen.</p>
+                <a href="b2b.html#inquiry" class="bg-white text-on-surface px-6 py-3 rounded-xl font-bold text-sm hover:bg-surface-container-low transition-colors inline-block">Kurs anfragen</a>
+            </div>
+
+            <!-- Back -->
+            <div class="mt-10 text-center">
+                <a href="blog.html" class="text-primary font-semibold text-sm flex items-center justify-center gap-1 hover:gap-2 transition-all">
+                    <span class="material-symbols-outlined text-lg">arrow_back</span> Zurück zum Blog
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-inverse-surface text-white/80 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <span class="text-sm font-black text-white">AED Premium</span>
+                <nav class="flex gap-6 text-xs text-white/40">
+                    <a class="hover:text-white/70" href="#">Datenschutz</a>
+                    <a class="hover:text-white/70" href="#">AGB</a>
+                    <a class="hover:text-white/70" href="#">Impressum</a>
+                </nav>
+                <span class="text-xs text-white/40">© 2026 AED Premium</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
