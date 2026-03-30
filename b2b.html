@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>B2B & Organisationen | AED Premium</title>
+    <meta name="description" content="Skalierbare AED-Lösungen für Unternehmen, Bildungseinrichtungen und Behörden. Pro-Care Wartung, Flottenmanagement und zertifizierte Schulungen." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#8dcdff",
+                        "on-surface-variant": "#5c403d",
+                        "primary": "#a60012",
+                        "on-tertiary-fixed": "#001e30",
+                        "error": "#ba1a1a",
+                        "primary-container": "#cb2426",
+                        "surface-container-highest": "#fadcd8",
+                        "secondary": "#a23d37",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#d8ecff",
+                        "tertiary-fixed": "#cae6ff",
+                        "outline-variant": "#e4bdb9",
+                        "secondary-container": "#fc8277",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fff8f7",
+                        "surface-variant": "#fadcd8",
+                        "secondary-fixed": "#ffdad6",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "inverse-on-surface": "#ffedea",
+                        "surface-container-high": "#ffe2de",
+                        "on-primary-fixed": "#410003",
+                        "primary-fixed": "#ffdad6",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004b70",
+                        "inverse-primary": "#ffb4ac",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fff8f7",
+                        "surface-tint": "#bb161d",
+                        "surface-container": "#ffe9e6",
+                        "background": "#fff8f7",
+                        "outline": "#906f6c",
+                        "surface-container-low": "#fff0ef",
+                        "inverse-surface": "#3e2c2a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#410003",
+                        "on-primary-container": "#ffe3e0",
+                        "tertiary-container": "#006fa3",
+                        "on-surface": "#271716",
+                        "on-background": "#271716",
+                        "tertiary": "#00567f",
+                        "surface-dim": "#f1d3d0",
+                        "on-primary-fixed-variant": "#93000e",
+                        "on-secondary-fixed-variant": "#822622",
+                        "secondary-fixed-dim": "#ffb4ac",
+                        "on-secondary-container": "#721a18"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-padding-top: 5rem; }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        .mobile-menu.open { transform: translateX(0); }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased">
+
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+            <a href="index.html" class="text-2xl font-black text-primary tracking-tighter">AED Premium</a>
+            <nav class="hidden md:flex items-center space-x-8 font-sans text-sm font-medium">
+                <a class="text-slate-600 hover:text-primary transition-colors duration-200" href="index.html">Shop</a>
+                <a class="text-primary border-b-2 border-primary pb-1 transition-colors duration-200" href="b2b.html">B2B &amp; Verbände</a>
+                <a class="text-slate-600 hover:text-primary transition-colors duration-200" href="kaufberater.html">Kaufberater</a>
+                <a class="text-slate-600 hover:text-primary transition-colors duration-200" href="index.html#support">Support</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="warenkorb.html" class="relative text-slate-600 hover:text-primary transition-all" aria-label="Warenkorb">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center">0</span>
+                </a>
+                <button class="text-slate-600 hover:text-primary transition-all" aria-label="Konto">
+                    <span class="material-symbols-outlined">person</span>
+                </button>
+                <button id="menuToggle" class="md:hidden text-slate-600" aria-label="Menü">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-white flex flex-col">
+        <div class="flex justify-between items-center px-6 py-4 border-b border-slate-200">
+            <span class="text-2xl font-black text-primary tracking-tighter">AED Premium</span>
+            <button id="menuClose" class="text-slate-600"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <nav class="flex flex-col px-6 py-8 space-y-6 text-lg font-semibold">
+            <a class="text-slate-600" href="index.html">Shop</a>
+            <a class="text-primary" href="b2b.html">B2B &amp; Verbände</a>
+            <a class="text-slate-600" href="kaufberater.html">Kaufberater</a>
+            <a class="text-slate-600" href="index.html#support">Support</a>
+        </nav>
+    </div>
+
+    <main class="pt-20 flex-grow">
+
+        <!-- Hero Section -->
+        <section class="relative bg-surface-container-low overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 py-20 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
+                <div class="z-10 fade-in">
+                    <span class="inline-block px-3 py-1 bg-primary text-on-primary text-xs font-bold uppercase tracking-widest rounded mb-6">Unternehmenslösungen</span>
+                    <h1 class="text-5xl lg:text-7xl font-black text-on-surface leading-tight mb-6 tracking-tight">
+                        Skalierbare Sicherheit für <span class="text-primary">Ihre gesamte Organisation.</span>
+                    </h1>
+                    <p class="text-xl text-on-surface-variant mb-10 leading-relaxed max-w-xl">
+                        Wir unterstützen Unternehmen, Bildungseinrichtungen und Behörden mit lebensrettender AED-Infrastruktur, Pro-Care™ Wartung und bundesweiten Schulungen.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a class="bg-primary text-on-primary px-8 py-4 rounded-lg font-bold text-center shadow-lg hover:bg-primary-container transition-all" href="#inquiry">Angebot anfordern</a>
+                        <a class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-bold text-center hover:bg-primary hover:text-on-primary transition-all" href="#procare">Pro-Care™ entdecken</a>
+                    </div>
+                </div>
+                <div class="relative fade-in">
+                    <div class="absolute -top-20 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+                    <img alt="Modernes Corporate Office mit AED-Ausstattung" class="rounded-2xl shadow-2xl z-0 relative object-cover h-[500px] w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEciFqPmjAYLeWocZW5rH9YKJ90HXzG57KlYu8gR2Gvzpn-SIYDc18Q29wiFTLHsW-snFxrLzu24Wsom7-Ld4G0ohd4QWSj-UKxy3WDokpz7ZYvPZYyijUYmVZ5uuWHex9Rj5UEE2DvH2BuhCBMfWIYX0ss9HP81G3US3B_tIvqgTi5S06fV_pdgH3pn47zOOgI1-w1pC5sz6Uj7i2Jt9G60GAaqgrkL51PuYNCZUeyL0n-a-FW9qG7SAWFezEVcbRfuIMfRkdKH0p" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Solutions Grid (Bento Style) -->
+        <section class="py-24 bg-surface px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-3xl lg:text-5xl font-extrabold text-on-surface mb-4">Umfassendes Flottenmanagement</h2>
+                    <p class="text-on-surface-variant max-w-2xl mx-auto">Von einzelnen Standorten bis hin zu internationalen Campus-Netzwerken – wir liefern die Hardware und den Service für herzsichere Umgebungen.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto lg:h-[700px]">
+                    <!-- Bulk Procurement -->
+                    <div class="md:col-span-8 bg-white p-8 rounded-2xl shadow-sm border border-outline-variant flex flex-col justify-between hover:shadow-md transition-shadow">
+                        <div>
+                            <div class="w-12 h-12 bg-primary-fixed-dim text-on-primary-fixed rounded-lg flex items-center justify-center mb-6">
+                                <span class="material-symbols-outlined">inventory_2</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Zentrale Beschaffung &amp; Logistik</h3>
+                            <p class="text-on-surface-variant text-lg leading-relaxed">Profitieren Sie von gestaffelten Preisstrukturen für großflächige AED-Einsätze. Wir übernehmen alles – von der Beschaffung bis zur standortspezifischen Lieferung und Installation.</p>
+                        </div>
+                        <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="text-center p-4 bg-surface-container rounded-xl">
+                                <div class="font-bold text-primary text-xl">15%</div>
+                                <div class="text-xs text-on-surface-variant">Volumenrabatt</div>
+                            </div>
+                            <div class="text-center p-4 bg-surface-container rounded-xl">
+                                <div class="font-bold text-primary text-xl">24h</div>
+                                <div class="text-xs text-on-surface-variant">Reaktionszeit</div>
+                            </div>
+                            <div class="text-center p-4 bg-surface-container rounded-xl">
+                                <div class="font-bold text-primary text-xl">Global</div>
+                                <div class="text-xs text-on-surface-variant">Versand</div>
+                            </div>
+                            <div class="text-center p-4 bg-surface-container rounded-xl">
+                                <div class="font-bold text-primary text-xl">Custom</div>
+                                <div class="text-xs text-on-surface-variant">Dashboards</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pro-Care Card -->
+                    <div class="md:col-span-4 bg-primary text-on-primary p-8 rounded-2xl shadow-lg flex flex-col justify-between" id="procare">
+                        <div>
+                            <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-6">
+                                <span class="material-symbols-outlined">verified_user</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Pro-Care™ Wartung</h3>
+                            <p class="text-primary-fixed leading-relaxed">Sorgen Sie sich nie wieder um abgelaufene Batterien oder Elektroden. Unser Pro-Care Programm umfasst jährliche Vor-Ort-Prüfungen, Compliance-Berichte und automatischen Nachschub.</p>
+                        </div>
+                        <ul class="space-y-4 mt-8">
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-sm">check_circle</span>
+                                <span class="text-sm">Jährliche Vor-Ort-Inspektion</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-sm">check_circle</span>
+                                <span class="text-sm">Fernüberwachungs-Integration</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-sm">check_circle</span>
+                                <span class="text-sm">Rechtssichere Dokumentation</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Training Card -->
+                    <div class="md:col-span-5 bg-tertiary-container text-on-tertiary-container p-8 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-6">
+                                <span class="material-symbols-outlined">school</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Zertifizierte Schulung</h3>
+                            <p class="text-on-tertiary-container/80">Zertifizierte Schulungen durch erfahrene Ausbilder direkt an Ihren Standorten. Wir befähigen Ihre Mitarbeiter, in Notfällen sicher zu handeln.</p>
+                        </div>
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-semibold">HLW/AED</span>
+                            <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-semibold">Erste Hilfe</span>
+                            <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-semibold">BFA</span>
+                            <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-semibold">BG-Konform</span>
+                        </div>
+                    </div>
+
+                    <!-- Fleet Management Card -->
+                    <div class="md:col-span-7 bg-surface-container-high p-8 rounded-2xl flex items-center justify-between border border-outline-variant overflow-hidden relative">
+                        <div class="z-10 max-w-[60%]">
+                            <h3 class="text-2xl font-bold mb-3 text-on-surface">Digitales Flotten-Dashboard</h3>
+                            <p class="text-on-surface-variant mb-6">Überwachen Sie Gerätezustand, Standort und Wartungshistorie zentral in einem Webportal.</p>
+                            <button class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-bold hover:bg-primary-container transition-colors">Demo anfordern</button>
+                        </div>
+                        <img alt="Dashboard Analysen" class="absolute right-0 top-0 h-full w-1/3 object-cover opacity-20 lg:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSreaiEXhYe6oGrD8gofaMBjagIPRWFaz1jjGzItKRAV2A-Rmc5bmJ1HRKggdnDyWU12lEHuDVRYYwejUj1Edi5R6l19E9rHAcKJX3zu_nalsafiUS_xjZAH928WGjed3LKpmTNF4sFMjKwHTJCJwKikLpcOCteZoEVXhjp6rH-1oWjdvp_ekR4E6xg8wuhQdPyNHTaVdyWE3ZW4SZCPfG5ZkgX48E8iXfiVMZac6u56mn-pK__wHgnHqjAkKXDKJ66jYQAiKwa9nV" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Section -->
+        <section class="py-16 bg-white border-y border-outline-variant">
+            <div class="max-w-7xl mx-auto px-6">
+                <p class="text-center text-xs font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-12">Vertrauen von Branchenführern</p>
+                <div class="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-60 grayscale">
+                    <div class="text-2xl font-black italic">GLOBALCORP</div>
+                    <div class="text-2xl font-serif font-bold">SafePath</div>
+                    <div class="text-2xl font-mono font-bold tracking-tighter">NEXUS_SYS</div>
+                    <div class="text-2xl font-bold">EDU-SAFE</div>
+                    <div class="text-2xl font-black">METRO-GOV</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inquiry Form Section -->
+        <section class="py-24 bg-surface-container-low px-6" id="inquiry">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+                <div class="lg:w-1/2 fade-in">
+                    <h2 class="text-4xl lg:text-5xl font-black text-on-surface mb-6">Ihre Sicherheits-Infrastruktur</h2>
+                    <p class="text-on-surface-variant text-lg mb-10 leading-relaxed">
+                        Unsere Spezialisten helfen Ihnen bei der Planung einer Strategie, die exakt zu den Anforderungen, dem Budget und den Compliance-Vorgaben Ihrer Organisation passt.
+                    </p>
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 bg-primary rounded-full flex-shrink-0 flex items-center justify-center text-on-primary font-bold">1</div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-on-surface">Beratung</h4>
+                                <p class="text-on-surface-variant">Wir bewerten Ihre Räumlichkeiten und bestehende Sicherheitsprotokolle.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 bg-primary rounded-full flex-shrink-0 flex items-center justify-center text-on-primary font-bold">2</div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-on-surface">Lösungsdesign</h4>
+                                <p class="text-on-surface-variant">Individueller Hardware-Mix und Planung der Pro-Care Servicelevel.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 bg-primary rounded-full flex-shrink-0 flex items-center justify-center text-on-primary font-bold">3</div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-on-surface">Implementierung</h4>
+                                <p class="text-on-surface-variant">Schnelle Auslieferung und Durchführung zertifizierter Schulungen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 bg-white p-8 lg:p-12 rounded-2xl shadow-xl border border-outline-variant">
+                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-on-surface">Vollständiger Name</label>
+                                <input class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary p-3" placeholder="Vorname Nachname" type="text" required />
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-on-surface">Geschäftliche E-Mail</label>
+                                <input class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary p-3" placeholder="beispiel@firma.de" type="email" required />
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-on-surface">Organisation / Unternehmen</label>
+                                <input class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary p-3" placeholder="Name Ihrer Firma" type="text" required />
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-on-surface">Branche</label>
+                                <select class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary p-3">
+                                    <option>Büro / Unternehmen</option>
+                                    <option>Bildungseinrichtung</option>
+                                    <option>Behörde / Öffentlicher Sektor</option>
+                                    <option>Gastronomie / Fitness</option>
+                                    <option>Industrie / Fertigung</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-on-surface">Geschätzte Flottengröße</label>
+                            <select class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary p-3">
+                                <option>10 - 50 Geräte</option>
+                                <option>50 - 200 Geräte</option>
+                                <option>Über 200 Geräte</option>
+                                <option>Noch unklar (Beratung erwünscht)</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-on-surface">Projektdetails</label>
+                            <textarea class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary p-3 h-32" placeholder="Beschreiben Sie uns Ihre Sicherheitsziele..."></textarea>
+                        </div>
+                        <button class="w-full bg-primary text-on-primary font-bold py-4 rounded-lg shadow-lg hover:scale-[1.02] transition-transform" type="submit">
+                            Anfrage senden
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-auto bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="text-lg font-black text-primary uppercase tracking-tight mb-4">AED Premium</div>
+                    <p class="text-xs text-slate-500 max-w-xs leading-relaxed">Ihr engagierter Partner für kardiale Sicherheit. Medizinische Ausrüstung für jede Umgebung.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-slate-900 mb-4">Shop</h4>
+                    <nav class="flex flex-col gap-2">
+                        <a class="text-xs text-slate-500 hover:text-primary" href="index.html#produkte">Alle Produkte</a>
+                        <a class="text-xs text-slate-500 hover:text-primary" href="kaufberater.html">Kaufberater</a>
+                        <a class="text-xs text-slate-500 hover:text-primary" href="vergleich.html">AED Vergleich</a>
+                    </nav>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-slate-900 mb-4">Service</h4>
+                    <nav class="flex flex-col gap-2">
+                        <a class="text-xs text-slate-500 hover:text-primary" href="b2b.html">B2B-Lösungen</a>
+                        <a class="text-xs text-slate-500 hover:text-primary" href="#">Schulungen</a>
+                        <a class="text-xs text-slate-500 hover:text-primary" href="#">Pro-Care Wartung</a>
+                    </nav>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-slate-900 mb-4">Kontakt</h4>
+                    <nav class="flex flex-col gap-2">
+                        <a class="text-xs text-slate-500 hover:text-primary" href="tel:+4930123456789">+49 (0)30 1234 567 89</a>
+                        <a class="text-xs text-slate-500 hover:text-primary" href="mailto:info@aed-premium.de">info@aed-premium.de</a>
+                        <span class="text-xs text-slate-500">Mo-Fr: 8:00 - 18:00 Uhr</span>
+                    </nav>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-200 gap-4">
+                <div class="text-xs text-slate-500">© 2026 AED Premium. Alle Rechte vorbehalten.</div>
+                <nav class="flex flex-wrap justify-center gap-6 text-xs text-slate-500">
+                    <a class="hover:text-primary hover:underline" href="#">Datenschutzrichtlinie</a>
+                    <a class="hover:text-primary hover:underline" href="#">Nutzungsbedingungen</a>
+                    <a class="hover:text-primary hover:underline" href="#">Impressum</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+        document.getElementById('menuClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

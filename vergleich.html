@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AED Vergleich | AED Premium Shop</title>
+    <meta name="description" content="Vergleichen Sie alle AED Defibrillatoren im Detail. Finden Sie das perfekte Gerät für Ihre Anforderungen." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant": "#5c403d", "primary": "#a60012", "primary-container": "#cb2426",
+                        "surface-container-highest": "#fadcd8", "secondary": "#a23d37",
+                        "outline-variant": "#e4bdb9", "on-primary": "#ffffff", "surface": "#fff8f7",
+                        "surface-variant": "#fadcd8", "surface-container": "#ffe9e6",
+                        "background": "#fff8f7", "surface-container-low": "#fff0ef",
+                        "surface-container-high": "#ffe2de", "on-surface": "#271716",
+                        "on-background": "#271716", "tertiary": "#00567f",
+                        "tertiary-container": "#006fa3", "on-tertiary-container": "#d8ecff",
+                        "on-tertiary": "#ffffff", "primary-fixed": "#ffdad6"
+                    },
+                    fontFamily: { "body": ["Inter", "sans-serif"] },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        body { font-family: 'Inter', sans-serif; }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        .mobile-menu.open { transform: translateX(0); }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+
+    <!-- TopNavBar -->
+    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm fixed top-0 w-full z-50">
+        <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+            <a href="index.html" class="text-2xl font-black text-primary tracking-tighter">AED Premium</a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a class="text-slate-600 hover:text-primary transition-colors" href="index.html">Shop</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="b2b.html">B2B &amp; Verbände</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="kaufberater.html">Kaufberater</a>
+                <a class="text-slate-600 hover:text-primary transition-colors" href="index.html#support">Support</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="warenkorb.html" class="relative text-slate-600 hover:text-primary transition-all">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center">0</span>
+                </a>
+                <button class="text-slate-600 hover:text-primary transition-all"><span class="material-symbols-outlined">person</span></button>
+                <button id="menuToggle" class="md:hidden text-slate-600"><span class="material-symbols-outlined">menu</span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-white flex flex-col">
+        <div class="flex justify-between items-center px-6 py-4 border-b">
+            <span class="text-2xl font-black text-primary tracking-tighter">AED Premium</span>
+            <button id="menuClose"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <nav class="flex flex-col px-6 py-8 space-y-6 text-lg font-semibold">
+            <a href="index.html">Shop</a>
+            <a href="b2b.html">B2B &amp; Verbände</a>
+            <a href="kaufberater.html">Kaufberater</a>
+        </nav>
+    </div>
+
+    <main class="pt-28 pb-20 px-6 flex-grow">
+        <div class="max-w-7xl mx-auto">
+
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-on-surface mb-4">Den richtigen AED vergleichen</h1>
+                <p class="text-on-surface-variant text-lg max-w-2xl mx-auto leading-relaxed">
+                    Vergleichen Sie unsere Geräte Seite an Seite und finden Sie den perfekten Lebensretter für Ihre Anforderungen.
+                </p>
+            </div>
+
+            <!-- Product Cards Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <!-- HeartBeat Home-S -->
+                <div class="bg-white rounded-2xl p-6 border border-outline-variant/30 shadow-sm text-center">
+                    <div class="aspect-square rounded-xl bg-slate-50 mb-4 overflow-hidden flex items-center justify-center p-6">
+                        <img alt="HeartBeat Home-S" class="h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcIwO1TIti-7qF0gy_3_SOoLsYJuzdMfHezFJd9vDoSZQqTAxqFgLylPz-brsDVjLe9kGxmxCsmL2Bxl6QQKzOtXw3KdW5k7MTKtXE6b8jViY2sKsZ_qBe2ymvow2vsN5lIb7DoJIzuc-YmDlvdn7gXaSHac1kzGfgCqq5gt1nAOq_1ToGIrfCGQjMuaSE-LmVNCluZO-w1LYK2uZmtMsDTpHAT5vnj5MzQkvF1Zi8yEXNxHXuEpazr6R7Iq0KdJe4dsoSZMboG4ON" />
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">HeartBeat Home-S</h3>
+                    <span class="text-primary font-black text-2xl">995 €</span>
+                    <p class="text-sm text-on-surface-variant mt-2 mb-4">Für den Heimgebrauch optimiert</p>
+                    <a href="warenkorb.html" class="block w-full bg-white border-2 border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary hover:text-on-primary transition-all">In den Warenkorb</a>
+                </div>
+
+                <!-- ProGuard-X (Featured) -->
+                <div class="bg-white rounded-2xl p-6 border-2 border-primary shadow-xl text-center relative ring-4 ring-primary/10">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest">Bestseller</div>
+                    <div class="aspect-square rounded-xl bg-slate-50 mb-4 overflow-hidden flex items-center justify-center p-6">
+                        <img alt="ProGuard-X Defibrillator" class="h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH5-Fv95cxggy_mOC69ijZgzcvAnR8NwTqkz-6etbWe8XcVqRl18yrjiOxZb4FVZ_OkKksovdLWY4Nl5YOOKXnhgdwAXFIz2_GvIyfJtHzAf4tWaupRM9LklljVPW3jsdDXu27Itv0Hf1PsK5HtGMGtpghiSGQNS5f0DgIoR0hNtn8Sd538OtFlLanpzqDXwLZbv3SKy4UtwRkOXtD29WwhxUYRvnaynLqsqyxhas7jQv4su1m6URq_XfzxFI-rHgz5ZkBozsQOuFe" />
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">ProGuard-X</h3>
+                    <span class="text-primary font-black text-2xl">1.499 €</span>
+                    <p class="text-sm text-on-surface-variant mt-2 mb-4">Der Goldstandard</p>
+                    <a href="warenkorb.html" class="block w-full bg-primary text-on-primary py-3 rounded-lg font-bold hover:bg-primary-container transition-colors">In den Warenkorb</a>
+                </div>
+
+                <!-- EliteForce Taktik -->
+                <div class="bg-white rounded-2xl p-6 border border-outline-variant/30 shadow-sm text-center">
+                    <div class="aspect-square rounded-xl bg-slate-50 mb-4 overflow-hidden flex items-center justify-center p-6">
+                        <img alt="EliteForce Taktik" class="h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqB778HTYx2Tt-wlDddJNsfoTv2rs9cyUziBy9gs0mhEMtPuxqKV31UcH1EXr-4cnS5NZJFSNwohyAhv9uTvfy2kVFH5gPIkF1iJk1lEFgw5fkFthiqjYyqEMHuMizN7-R3jHPI_Y-jXWngWwwHc2JVBIjurqwpJ4Ft8xm78HOa143mePzCfsCs-w6GovpGsoMOXwVS2Aeu3x37jaSH8DkXhvMoA5ta1VkZ9ozMO_x7pXuTmEXr8tGOxhO3mw_nBPhsVpBJRaaZqj9" />
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">EliteForce Taktik</h3>
+                    <span class="text-primary font-black text-2xl">1.850 €</span>
+                    <p class="text-sm text-on-surface-variant mt-2 mb-4">Maximale Robustheit</p>
+                    <a href="warenkorb.html" class="block w-full bg-white border-2 border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary hover:text-on-primary transition-all">In den Warenkorb</a>
+                </div>
+            </div>
+
+            <!-- Detailed Comparison Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/30">
+                    <thead>
+                        <tr class="bg-surface-container-high">
+                            <th class="text-left p-5 font-bold text-on-surface w-1/4">Eigenschaft</th>
+                            <th class="p-5 font-bold text-on-surface text-center">HeartBeat Home-S</th>
+                            <th class="p-5 font-bold text-on-surface text-center bg-primary/5 border-x border-primary/10">ProGuard-X</th>
+                            <th class="p-5 font-bold text-on-surface text-center">EliteForce Taktik</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/30">
+                        <!-- Preis -->
+                        <tr>
+                            <td class="p-5 font-medium text-on-surface-variant">Preis</td>
+                            <td class="p-5 text-center font-bold text-primary">995 €</td>
+                            <td class="p-5 text-center font-bold text-primary bg-primary/5 border-x border-primary/10">1.499 €</td>
+                            <td class="p-5 text-center font-bold text-primary">1.850 €</td>
+                        </tr>
+                        <!-- Zielgruppe -->
+                        <tr class="bg-surface-container-low/50">
+                            <td class="p-5 font-medium text-on-surface-variant">Zielgruppe</td>
+                            <td class="p-5 text-center text-sm">Privat, Familie</td>
+                            <td class="p-5 text-center text-sm bg-primary/5 border-x border-primary/10">Büros, Praxen, Vereine</td>
+                            <td class="p-5 text-center text-sm">Outdoor, Industrie, Maritim</td>
+                        </tr>
+                        <!-- Schutzklasse -->
+                        <tr>
+                            <td class="p-5 font-medium text-on-surface-variant">Schutzklasse</td>
+                            <td class="p-5 text-center">IP44</td>
+                            <td class="p-5 text-center bg-primary/5 border-x border-primary/10">IP55</td>
+                            <td class="p-5 text-center font-bold text-green-700">IP67</td>
+                        </tr>
+                        <!-- Gewicht -->
+                        <tr class="bg-surface-container-low/50">
+                            <td class="p-5 font-medium text-on-surface-variant">Gewicht</td>
+                            <td class="p-5 text-center font-bold text-green-700">1,8 kg</td>
+                            <td class="p-5 text-center bg-primary/5 border-x border-primary/10">2,4 kg</td>
+                            <td class="p-5 text-center">3,1 kg</td>
+                        </tr>
+                        <!-- Garantie -->
+                        <tr>
+                            <td class="p-5 font-medium text-on-surface-variant">Garantie</td>
+                            <td class="p-5 text-center">5 Jahre</td>
+                            <td class="p-5 text-center bg-primary/5 border-x border-primary/10">8 Jahre</td>
+                            <td class="p-5 text-center font-bold text-green-700">10 Jahre</td>
+                        </tr>
+                        <!-- Batterielebensdauer -->
+                        <tr class="bg-surface-container-low/50">
+                            <td class="p-5 font-medium text-on-surface-variant">Batterielebensdauer</td>
+                            <td class="p-5 text-center">3 Jahre</td>
+                            <td class="p-5 text-center bg-primary/5 border-x border-primary/10">4 Jahre</td>
+                            <td class="p-5 text-center font-bold text-green-700">5 Jahre</td>
+                        </tr>
+                        <!-- Schockzeit -->
+                        <tr>
+                            <td class="p-5 font-medium text-on-surface-variant">Schockzeit</td>
+                            <td class="p-5 text-center">< 8 Sek.</td>
+                            <td class="p-5 text-center bg-primary/5 border-x border-primary/10 font-bold text-green-700">< 5 Sek.</td>
+                            <td class="p-5 text-center font-bold text-green-700">< 5 Sek.</td>
+                        </tr>
+                        <!-- Kindermodus -->
+                        <tr class="bg-surface-container-low/50">
+                            <td class="p-5 font-medium text-on-surface-variant">Kindermodus</td>
+                            <td class="p-5 text-center"><span class="material-symbols-outlined text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span></td>
+                            <td class="p-5 text-center bg-primary/5 border-x border-primary/10"><span class="material-symbols-outlined text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span></td>
+                            <td class="p-5 text-center"><span class="material-symbols-outlined text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span></td>
+                        </tr>
+                        <!-- Sprachführung -->
+                        <tr>
+                            <td class="p-5 font-medium text-on-surface-variant">Sprachführung</td>
+                            <td class="p-5 text-center">3 Sprachen</td>
+                            <td class="p-5 text-center bg-primary/5 border-x border-primary/10">6 Sprachen</td>
+                            <td class="p-5 text-center font-bold text-green-700">8 Sprachen</td>
+                        </tr>
+                        <!-- Visuelle Anleitung -->
+                        <tr class="bg-surface-container-low/50">
+                            <td class="p-5 font-medium text-on-surface-variant">Visuelle Anleitung</td>
+                            <td class="p-5 text-center">LED-Piktogramme</td>
+                            <td class="p-5 text-center bg-primary/5 border-x border-primary/10">LCD-Display</td>
+                            <td class="p-5 text-center">LCD-Display + LEDs</td>
+                        </tr>
+                        <!-- Selbsttest -->
+                        <tr>
+                            <td class="p-5 font-medium text-on-surface-variant">Automatischer Selbsttest</td>
+                            <td class="p-5 text-center">Wöchentlich</td>
+                            <td class="p-5 text-center bg-primary/5 border-x border-primary/10 font-bold text-green-700">Täglich</td>
+                            <td class="p-5 text-center font-bold text-green-700">Täglich</td>
+                        </tr>
+                        <!-- WLAN -->
+                        <tr class="bg-surface-container-low/50">
+                            <td class="p-5 font-medium text-on-surface-variant">WLAN / Fernüberwachung</td>
+                            <td class="p-5 text-center"><span class="material-symbols-outlined text-slate-300">close</span></td>
+                            <td class="p-5 text-center bg-primary/5 border-x border-primary/10"><span class="material-symbols-outlined text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span></td>
+                            <td class="p-5 text-center"><span class="material-symbols-outlined text-green-600" style="font-variation-settings: 'FILL' 1">check_circle</span></td>
+                        </tr>
+                        <!-- Zertifizierungen -->
+                        <tr>
+                            <td class="p-5 font-medium text-on-surface-variant">Zertifizierungen</td>
+                            <td class="p-5 text-center text-sm">CE, MDR</td>
+                            <td class="p-5 text-center text-sm bg-primary/5 border-x border-primary/10">CE, MDR, FDA</td>
+                            <td class="p-5 text-center text-sm font-bold">CE, MDR, FDA, MIL-STD</td>
+                        </tr>
+                        <!-- Lieferumfang -->
+                        <tr class="bg-surface-container-low/50">
+                            <td class="p-5 font-medium text-on-surface-variant">Lieferumfang</td>
+                            <td class="p-5 text-center text-sm">Gerät, Elektroden, Batterie, Anleitung</td>
+                            <td class="p-5 text-center text-sm bg-primary/5 border-x border-primary/10">+ Tragetasche, Wandhalterung, Notfallset</td>
+                            <td class="p-5 text-center text-sm">+ Hartschalenkoffer, 2x Elektroden, Notfallset</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="mt-16 bg-primary rounded-[2rem] p-12 text-on-primary text-center relative overflow-hidden">
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-black mb-4">Noch unsicher?</h2>
+                    <p class="text-on-primary/80 max-w-xl mx-auto mb-8">Nutzen Sie unseren interaktiven Kaufberater oder lassen Sie sich persönlich von unseren AED-Experten beraten.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="kaufberater.html" class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-surface transition-colors">
+                            Kaufberater starten
+                        </a>
+                        <a href="tel:+4930123456789" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-primary transition-all">
+                            Experten anrufen
+                        </a>
+                    </div>
+                </div>
+                <div class="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-auto bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-lg font-black text-primary uppercase tracking-tight">AED Premium</div>
+                <nav class="flex gap-6 text-xs text-slate-500">
+                    <a class="hover:text-primary" href="#">Datenschutz</a>
+                    <a class="hover:text-primary" href="#">AGB</a>
+                    <a class="hover:text-primary" href="#">Impressum</a>
+                </nav>
+                <div class="text-xs text-slate-500">© 2026 AED Premium</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+        document.getElementById('menuClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+    </script>
+</body>
+</html>
