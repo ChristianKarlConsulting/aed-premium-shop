@@ -3,31 +3,26 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>AED Kaufberater | AED Premium Shop</title>
-    <meta name="description" content="Finden Sie in wenigen Schritten den perfekten AED Defibrillator. Unser interaktiver Kaufberater hilft bei der Auswahl." />
+    <title>AED Beratung | AED Premium Shop</title>
+    <meta name="description" content="Finden Sie in wenigen Schritten den perfekten AED und das passende Zubehör. Interaktive Bedarfsanalyse." />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "on-surface-variant": "#5c403d", "primary": "#a60012", "primary-container": "#cb2426",
-                        "surface-container-highest": "#fadcd8", "secondary": "#a23d37", "surface-container-lowest": "#ffffff",
-                        "on-tertiary-container": "#d8ecff", "outline-variant": "#e4bdb9", "secondary-container": "#fc8277",
-                        "on-secondary": "#ffffff", "surface": "#fff8f7", "surface-variant": "#fadcd8",
-                        "primary-fixed-dim": "#ffb4ac", "surface-container-high": "#ffe2de", "on-primary-fixed": "#410003",
-                        "primary-fixed": "#ffdad6", "on-primary": "#ffffff", "on-tertiary": "#ffffff",
-                        "surface-container": "#ffe9e6", "background": "#fff8f7", "outline": "#906f6c",
-                        "surface-container-low": "#fff0ef", "inverse-surface": "#3e2c2a",
-                        "on-primary-container": "#ffe3e0", "tertiary-container": "#006fa3",
-                        "on-surface": "#271716", "on-background": "#271716", "tertiary": "#00567f",
-                        "surface-dim": "#f1d3d0", "on-secondary-container": "#721a18"
+                        "on-surface-variant":"#5c403d","primary":"#a60012","primary-container":"#cb2426",
+                        "surface-container-highest":"#fadcd8","outline-variant":"#e4bdb9",
+                        "on-primary":"#ffffff","surface":"#fff8f7","surface-container":"#ffe9e6",
+                        "background":"#fff8f7","surface-container-low":"#fff0ef",
+                        "surface-container-high":"#ffe2de","on-surface":"#271716","on-background":"#271716",
+                        "tertiary":"#00567f","inverse-surface":"#3e2c2a","primary-fixed-dim":"#ffb4ac",
+                        "on-tertiary":"#ffffff","tertiary-container":"#006fa3","on-tertiary-container":"#d8ecff",
+                        "on-primary-container":"#ffe3e0"
                     },
-                    fontFamily: { "headline": ["Inter", "sans-serif"], "body": ["Inter", "sans-serif"] },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    fontFamily: { "body": ["Inter", "sans-serif"] },
                 },
             },
         }
@@ -35,324 +30,449 @@
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
         body { font-family: 'Inter', sans-serif; }
-        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
-        .mobile-menu.open { transform: translateX(0); }
-        .wizard-step { display: none; }
-        .wizard-step.active { display: block; }
-        .option-card { transition: all 0.3s ease; }
-        .option-card:hover { transform: translateY(-2px); }
-        .option-card.selected { border-color: #a60012; box-shadow: 0 0 0 3px rgba(166,0,18,0.15); }
+        .step { display: none; animation: fadeIn 0.4s ease; }
+        .step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .option-btn { transition: all 0.25s ease; }
+        .option-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px -4px rgba(0,0,0,0.08); }
+        .option-btn.selected { border-color: #a60012 !important; background: rgba(166,0,18,0.03); box-shadow: 0 0 0 3px rgba(166,0,18,0.1); }
+        .symptom-tag { cursor: pointer; transition: all 0.2s ease; }
+        .symptom-tag:hover { transform: scale(1.03); }
+        .symptom-tag.active { background: #a60012; color: white; border-color: #a60012; }
+        .accessory-card { transition: all 0.25s ease; }
+        .accessory-card:hover { transform: translateY(-2px); }
+        .accessory-card.added { border-color: #00567f; background: rgba(0,86,127,0.03); }
+        .accessory-card.added .add-btn { background: #00567f; color: white; }
     </style>
 </head>
-<body class="bg-surface font-body text-on-surface antialiased min-h-screen flex flex-col">
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
 
-    <!-- TopNavBar -->
-    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm fixed top-0 w-full z-50">
-        <div class="flex justify-between items-center h-20 px-6 md:px-12 max-w-screen-2xl mx-auto">
-            <a href="index.html" class="text-2xl font-black tracking-tighter text-primary uppercase">AED Premium</a>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a class="text-slate-600 hover:text-primary transition-colors" href="index.html">Shop</a>
-                <a class="text-slate-600 hover:text-primary transition-colors" href="b2b.html">B2B &amp; Verbände</a>
-                <a class="text-primary border-b-2 border-primary pb-1 font-semibold" href="kaufberater.html">Kaufberater</a>
-                <a class="text-slate-600 hover:text-primary transition-colors" href="index.html#support">Support</a>
-            </nav>
-            <div class="flex items-center gap-4">
-                <a href="warenkorb.html" class="relative p-2 hover:bg-gray-50 rounded-full transition-all">
-                    <span class="material-symbols-outlined text-gray-700">shopping_cart</span>
-                    <span class="absolute -top-0 -right-0 w-4 h-4 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center">0</span>
+    <!-- Top Bar -->
+    <div class="hidden md:block bg-inverse-surface text-white/90 text-xs fixed top-0 w-full z-[51]">
+        <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">local_shipping</span> Gratis Versand ab 500 €</span>
+                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[13px] text-primary-fixed-dim">verified</span> Zertifizierte Medizinprodukte</span>
+            </div>
+            <a href="tel:+4930123456789" class="flex items-center gap-1.5 hover:text-white"><span class="material-symbols-outlined text-[13px]">phone</span> +49 30 1234 567 89</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 md:top-[32px] w-full z-50 bg-white/95 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16 md:h-[68px]">
+                <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+                    <img src="logo-icon.svg" alt="AED Premium" class="w-9 h-9" />
+                    <span class="text-[22px] font-black tracking-tight"><span class="text-on-surface">AED</span><span class="text-primary"> Premium</span></span>
                 </a>
-                <button class="p-2 hover:bg-gray-50 rounded-full transition-all"><span class="material-symbols-outlined text-gray-700">account_circle</span></button>
-                <button id="menuToggle" class="md:hidden p-2"><span class="material-symbols-outlined text-gray-700">menu</span></button>
+                <nav class="hidden md:flex items-center h-full gap-1">
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="index.html">Shop</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="b2b.html">Unternehmen</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-primary transition-colors" href="kaufberater.html">Beratung</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="blog.html">Blog</a>
+                    <a class="relative h-full flex items-center px-4 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors" href="index.html#support">Hilfe</a>
+                </nav>
+                <div class="flex items-center gap-0.5">
+                    <a href="warenkorb.html" class="relative p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary">
+                        <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+                    </a>
+                    <a href="konto.html" class="p-2.5 rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant hover:text-primary">
+                        <span class="material-symbols-outlined text-[22px]">person</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-white flex flex-col">
-        <div class="flex justify-between items-center px-6 py-4 border-b">
-            <span class="text-2xl font-black text-primary tracking-tighter">AED Premium</span>
-            <button id="menuClose"><span class="material-symbols-outlined">close</span></button>
-        </div>
-        <nav class="flex flex-col px-6 py-8 space-y-6 text-lg font-semibold">
-            <a href="index.html">Shop</a>
-            <a href="b2b.html">B2B &amp; Verbände</a>
-            <a class="text-primary" href="kaufberater.html">Kaufberater</a>
-            <a href="index.html#support">Support</a>
-        </nav>
-    </div>
+    <main class="pt-24 md:pt-[120px] pb-20 px-6 flex-grow">
+        <div class="max-w-3xl mx-auto">
 
-    <main class="pt-32 pb-20 px-6 flex-grow">
-        <div class="max-w-4xl mx-auto">
-
-            <!-- Hero Header -->
-            <div class="text-center mb-12">
-                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-on-surface mb-4">AED Kaufberater</h1>
-                <p class="text-on-surface-variant text-lg max-w-2xl mx-auto leading-relaxed">
-                    In nur wenigen Schritten zum passenden Lebensretter. Unser interaktiver Guide hilft Ihnen, das perfekte Gerät für Ihre spezifischen Anforderungen zu finden.
+            <!-- Header -->
+            <div class="text-center mb-10">
+                <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <span class="material-symbols-outlined text-primary text-3xl">stethoscope</span>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-black tracking-tight text-on-surface mb-3">Finden Sie den richtigen AED</h1>
+                <p class="text-on-surface-variant text-sm max-w-lg mx-auto leading-relaxed">
+                    Beantworten Sie ein paar Fragen zu Ihrer Situation. Wir empfehlen das passende Gerät und sinnvolles Zubehör.
                 </p>
             </div>
 
-            <!-- Progress Stepper -->
-            <div class="mb-12">
-                <div class="flex justify-between mb-4">
-                    <span id="stepLabel" class="text-xs font-bold uppercase tracking-widest text-primary">Schritt 1 von 3</span>
-                    <span id="stepTitle" class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Wer nutzt den AED?</span>
+            <!-- Progress -->
+            <div class="mb-10">
+                <div class="flex justify-between mb-2">
+                    <span id="stepLabel" class="text-[11px] font-bold uppercase tracking-widest text-primary">Schritt 1 von 4</span>
+                    <span id="stepTitle" class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">Ihre Situation</span>
                 </div>
-                <div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
-                    <div id="progressBar" class="h-full bg-primary-container w-1/3 transition-all duration-500 ease-out"></div>
-                </div>
-            </div>
-
-            <!-- Step 1: User Type -->
-            <div class="wizard-step active" id="step1">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <button onclick="selectOption(1, 'privat')" class="option-card flex flex-col items-center p-8 bg-white border-2 border-transparent hover:border-primary rounded-xl shadow-sm hover:shadow-xl text-center active:scale-[0.98]">
-                        <div class="w-20 h-20 bg-surface-container flex items-center justify-center rounded-full mb-6">
-                            <span class="material-symbols-outlined text-4xl text-primary">home</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Privatpersonen</h3>
-                        <p class="text-sm text-on-surface-variant mb-6 leading-snug">Sicherheit für Ihr Zuhause und Ihre Familie. Einfachste Bedienung für Laien.</p>
-                        <span class="mt-auto inline-flex items-center text-primary font-bold text-sm uppercase tracking-wider">
-                            Auswählen <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
-                        </span>
-                    </button>
-
-                    <button onclick="selectOption(1, 'verein')" class="option-card flex flex-col items-center p-8 bg-white border-2 border-primary rounded-xl shadow-xl text-center relative ring-4 ring-primary/10">
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Empfohlen</div>
-                        <div class="w-20 h-20 bg-primary-container flex items-center justify-center rounded-full mb-6">
-                            <span class="material-symbols-outlined text-4xl text-on-primary-container">groups</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Vereine / Sport</h3>
-                        <p class="text-sm text-on-surface-variant mb-6 leading-snug">Robust und zuverlässig für den Einsatz am Spielfeldrand oder im Clubhaus.</p>
-                        <span class="mt-auto inline-flex items-center text-primary font-bold text-sm uppercase tracking-wider">
-                            Auswählen <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
-                        </span>
-                    </button>
-
-                    <button onclick="selectOption(1, 'unternehmen')" class="option-card flex flex-col items-center p-8 bg-white border-2 border-transparent hover:border-primary rounded-xl shadow-sm hover:shadow-xl text-center active:scale-[0.98]">
-                        <div class="w-20 h-20 bg-surface-container flex items-center justify-center rounded-full mb-6">
-                            <span class="material-symbols-outlined text-4xl text-primary">domain</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Unternehmen</h3>
-                        <p class="text-sm text-on-surface-variant mb-6 leading-snug">Professionelle Lösungen für Betriebsstätten, Büros und industrielle Umgebungen.</p>
-                        <span class="mt-auto inline-flex items-center text-primary font-bold text-sm uppercase tracking-wider">
-                            Auswählen <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
-                        </span>
-                    </button>
+                <div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+                    <div id="progressBar" class="h-full bg-primary rounded-full w-1/4 transition-all duration-500 ease-out"></div>
                 </div>
             </div>
 
-            <!-- Step 2: Environment -->
-            <div class="wizard-step" id="step2">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <button onclick="selectOption(2, 'innen')" class="option-card flex items-center gap-6 p-8 bg-white border-2 border-transparent hover:border-primary rounded-xl shadow-sm hover:shadow-xl text-left active:scale-[0.98]">
-                        <div class="w-16 h-16 bg-surface-container flex-shrink-0 flex items-center justify-center rounded-full">
-                            <span class="material-symbols-outlined text-3xl text-primary">meeting_room</span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Innenbereich</h3>
-                            <p class="text-sm text-on-surface-variant">Büro, Praxis, Schule, Fitnessstudio oder Wohnraum.</p>
-                        </div>
-                    </button>
-                    <button onclick="selectOption(2, 'aussen')" class="option-card flex items-center gap-6 p-8 bg-white border-2 border-transparent hover:border-primary rounded-xl shadow-sm hover:shadow-xl text-left active:scale-[0.98]">
-                        <div class="w-16 h-16 bg-surface-container flex-shrink-0 flex items-center justify-center rounded-full">
-                            <span class="material-symbols-outlined text-3xl text-primary">park</span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Außenbereich</h3>
-                            <p class="text-sm text-on-surface-variant">Sportplatz, Baustelle, Pool, maritime Umgebung.</p>
-                        </div>
-                    </button>
-                    <button onclick="selectOption(2, 'beides')" class="option-card flex items-center gap-6 p-8 bg-white border-2 border-transparent hover:border-primary rounded-xl shadow-sm hover:shadow-xl text-left active:scale-[0.98] md:col-span-2">
-                        <div class="w-16 h-16 bg-surface-container flex-shrink-0 flex items-center justify-center rounded-full">
-                            <span class="material-symbols-outlined text-3xl text-primary">swap_horiz</span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Beides / Flexibel</h3>
-                            <p class="text-sm text-on-surface-variant">Das Gerät soll sowohl innen als auch außen einsetzbar sein.</p>
-                        </div>
-                    </button>
+            <!-- ===== STEP 1: Situation / "Symptome" ===== -->
+            <div class="step active" id="step1">
+                <h2 class="text-lg font-bold text-on-surface mb-2">Was beschreibt Ihre Situation?</h2>
+                <p class="text-sm text-on-surface-variant mb-6">Wählen Sie alle zutreffenden Punkte aus.</p>
+
+                <div class="flex flex-wrap gap-2 mb-8" id="symptomTags">
+                    <button class="symptom-tag px-4 py-2.5 rounded-full border border-outline-variant/40 bg-white text-sm font-medium text-on-surface" data-tag="mitarbeiter">Viele Mitarbeiter</button>
+                    <button class="symptom-tag px-4 py-2.5 rounded-full border border-outline-variant/40 bg-white text-sm font-medium text-on-surface" data-tag="publikum">Publikumsverkehr</button>
+                    <button class="symptom-tag px-4 py-2.5 rounded-full border border-outline-variant/40 bg-white text-sm font-medium text-on-surface" data-tag="kinder">Kinder anwesend</button>
+                    <button class="symptom-tag px-4 py-2.5 rounded-full border border-outline-variant/40 bg-white text-sm font-medium text-on-surface" data-tag="outdoor">Outdoor / Wetter</button>
+                    <button class="symptom-tag px-4 py-2.5 rounded-full border border-outline-variant/40 bg-white text-sm font-medium text-on-surface" data-tag="sport">Sport / Fitness</button>
+                    <button class="symptom-tag px-4 py-2.5 rounded-full border border-outline-variant/40 bg-white text-sm font-medium text-on-surface" data-tag="senioren">Ältere Personen</button>
+                    <button class="symptom-tag px-4 py-2.5 rounded-full border border-outline-variant/40 bg-white text-sm font-medium text-on-surface" data-tag="baustelle">Baustelle / Industrie</button>
+                    <button class="symptom-tag px-4 py-2.5 rounded-full border border-outline-variant/40 bg-white text-sm font-medium text-on-surface" data-tag="reisen">Unterwegs / Reisen</button>
+                    <button class="symptom-tag px-4 py-2.5 rounded-full border border-outline-variant/40 bg-white text-sm font-medium text-on-surface" data-tag="zuhause">Zuhause / Familie</button>
+                    <button class="symptom-tag px-4 py-2.5 rounded-full border border-outline-variant/40 bg-white text-sm font-medium text-on-surface" data-tag="compliance">BG / Compliance nötig</button>
                 </div>
-                <button onclick="goBack(1)" class="mt-8 text-on-surface-variant font-medium flex items-center gap-2 hover:text-primary transition-colors">
-                    <span class="material-symbols-outlined text-sm">arrow_back</span> Zurück
+
+                <!-- Live "Diagnosis" Hint -->
+                <div id="diagnosisHint" class="bg-surface-container-low rounded-xl p-4 mb-6 hidden">
+                    <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Erste Einschätzung</p>
+                    <p id="diagnosisText" class="text-sm text-on-surface-variant leading-relaxed"></p>
+                </div>
+
+                <button onclick="goToStep(2)" id="step1Next" class="w-full bg-primary text-on-primary py-4 rounded-xl font-bold text-sm hover:bg-primary-container transition-colors disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+                    Weiter
                 </button>
             </div>
 
-            <!-- Step 3: Budget -->
-            <div class="wizard-step" id="step3">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <button onclick="selectOption(3, 'basis')" class="option-card flex flex-col items-center p-8 bg-white border-2 border-transparent hover:border-primary rounded-xl shadow-sm hover:shadow-xl text-center active:scale-[0.98]">
-                        <span class="text-3xl font-black text-primary mb-4">bis 1.000 €</span>
-                        <h3 class="text-lg font-bold mb-2">Basis</h3>
-                        <p class="text-sm text-on-surface-variant">Zuverlässige Einstiegsgeräte mit allen Grundfunktionen.</p>
+            <!-- ===== STEP 2: Umgebung ===== -->
+            <div class="step" id="step2">
+                <h2 class="text-lg font-bold text-on-surface mb-2">Wo soll das Gerät stehen?</h2>
+                <p class="text-sm text-on-surface-variant mb-6">Das bestimmt die nötige Schutzklasse.</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <button onclick="selectEnv('innen')" class="option-btn flex flex-col items-center p-6 bg-white border-2 border-transparent rounded-xl text-center" data-env="innen">
+                        <span class="material-symbols-outlined text-3xl text-primary mb-3">meeting_room</span>
+                        <span class="font-bold text-sm mb-1">Innenraum</span>
+                        <span class="text-xs text-on-surface-variant">Büro, Praxis, Zuhause</span>
                     </button>
-                    <button onclick="selectOption(3, 'premium')" class="option-card flex flex-col items-center p-8 bg-white border-2 border-primary rounded-xl shadow-xl text-center relative ring-4 ring-primary/10">
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Beliebt</div>
-                        <span class="text-3xl font-black text-primary mb-4">1.000 - 1.600 €</span>
-                        <h3 class="text-lg font-bold mb-2">Premium</h3>
-                        <p class="text-sm text-on-surface-variant">Erweiterte Funktionen, längere Garantie und mehr Sprachoptionen.</p>
+                    <button onclick="selectEnv('aussen')" class="option-btn flex flex-col items-center p-6 bg-white border-2 border-transparent rounded-xl text-center" data-env="aussen">
+                        <span class="material-symbols-outlined text-3xl text-primary mb-3">park</span>
+                        <span class="font-bold text-sm mb-1">Außen</span>
+                        <span class="text-xs text-on-surface-variant">Sportplatz, Pool, Garten</span>
                     </button>
-                    <button onclick="selectOption(3, 'profi')" class="option-card flex flex-col items-center p-8 bg-white border-2 border-transparent hover:border-primary rounded-xl shadow-sm hover:shadow-xl text-center active:scale-[0.98]">
-                        <span class="text-3xl font-black text-primary mb-4">ab 1.600 €</span>
-                        <h3 class="text-lg font-bold mb-2">Profi</h3>
-                        <p class="text-sm text-on-surface-variant">Maximale Robustheit, IP67+, Profi-Features und Langzeitgarantie.</p>
+                    <button onclick="selectEnv('extrem')" class="option-btn flex flex-col items-center p-6 bg-white border-2 border-transparent rounded-xl text-center" data-env="extrem">
+                        <span class="material-symbols-outlined text-3xl text-primary mb-3">construction</span>
+                        <span class="font-bold text-sm mb-1">Extrem</span>
+                        <span class="text-xs text-on-surface-variant">Baustelle, Maritim, Staub</span>
                     </button>
                 </div>
-                <button onclick="goBack(2)" class="mt-8 text-on-surface-variant font-medium flex items-center gap-2 hover:text-primary transition-colors">
-                    <span class="material-symbols-outlined text-sm">arrow_back</span> Zurück
+
+                <div class="flex gap-3">
+                    <button onclick="goToStep(1)" class="px-6 py-3 text-on-surface-variant font-medium text-sm rounded-xl hover:bg-surface-container-low transition-colors">Zurück</button>
+                </div>
+            </div>
+
+            <!-- ===== STEP 3: Ergebnis + Empfehlung ===== -->
+            <div class="step" id="step3">
+                <div class="text-center mb-8">
+                    <span class="material-symbols-outlined text-5xl text-green-600 mb-3" style="font-variation-settings: 'FILL' 1">check_circle</span>
+                    <h2 class="text-2xl font-black text-on-surface mb-1">Unsere Empfehlung für Sie</h2>
+                    <p class="text-sm text-on-surface-variant" id="resultSummary"></p>
+                </div>
+
+                <!-- Main Product Recommendation -->
+                <div id="mainProduct" class="bg-white rounded-2xl p-6 border-2 border-primary shadow-lg mb-6 relative">
+                    <div class="absolute -top-3 left-6 bg-primary text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest">Empfohlen</div>
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <div class="w-full sm:w-40 h-40 bg-surface-container-low rounded-xl flex items-center justify-center p-4 shrink-0">
+                            <img id="recImg" alt="" class="h-full object-contain" />
+                        </div>
+                        <div class="flex-grow">
+                            <h3 id="recName" class="text-xl font-black text-on-surface mb-1"></h3>
+                            <span id="recPrice" class="text-primary font-black text-2xl"></span>
+                            <p id="recDesc" class="text-sm text-on-surface-variant mt-2 mb-4 leading-relaxed"></p>
+                            <div id="recFeatures" class="flex flex-wrap gap-2 mb-4"></div>
+                            <button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary-container transition-colors">In den Warenkorb</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="goToStep(4)" class="w-full text-primary font-semibold text-sm py-3 flex items-center justify-center gap-1 hover:gap-2 transition-all">
+                    Weiter: Passendes Zubehör <span class="material-symbols-outlined text-lg">arrow_forward</span>
                 </button>
+
+                <button onclick="goToStep(1)" class="w-full text-on-surface-variant font-medium text-xs py-2 mt-1">Beratung neu starten</button>
             </div>
 
-            <!-- Results -->
-            <div class="wizard-step" id="results">
-                <div class="text-center mb-10">
-                    <span class="material-symbols-outlined text-6xl text-primary mb-4" style="font-variation-settings: 'FILL' 1">check_circle</span>
-                    <h2 class="text-3xl font-black text-on-surface mb-2">Ihre Empfehlung</h2>
-                    <p class="text-on-surface-variant">Basierend auf Ihren Angaben empfehlen wir folgende Geräte:</p>
-                </div>
+            <!-- ===== STEP 4: Zubehör / Cross-Sell ===== -->
+            <div class="step" id="step4">
+                <h2 class="text-lg font-bold text-on-surface mb-1">Dazu empfehlen wir</h2>
+                <p class="text-sm text-on-surface-variant mb-6">Passendes Zubehör für Ihr <span id="recNameRepeat" class="font-semibold text-on-surface"></span>.</p>
 
-                <div id="recommendationGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <!-- Filled by JS -->
-                </div>
+                <div class="space-y-3 mb-8" id="accessoryList">
+                    <!-- Wandhalterung -->
+                    <div class="accessory-card bg-white rounded-xl border border-outline-variant/20 p-4 flex items-center gap-4">
+                        <div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl text-primary">wall_art</span>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <h4 class="font-bold text-sm">Wandhalterung mit Alarm</h4>
+                            <p class="text-xs text-on-surface-variant">Sichtbare Montage mit akustischem Signal bei Entnahme.</p>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <div class="text-primary font-bold text-sm mb-1">89 €</div>
+                            <button class="add-btn px-3 py-1.5 bg-surface-container-low text-on-surface text-xs font-bold rounded-lg hover:bg-primary hover:text-white transition-all" onclick="toggleAccessory(this)">
+                                Hinzufügen
+                            </button>
+                        </div>
+                    </div>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="vergleich.html" class="bg-white border-2 border-primary text-primary px-8 py-4 rounded-lg font-bold text-center hover:bg-primary hover:text-on-primary transition-all">
-                        Alle Geräte vergleichen
-                    </a>
-                    <button onclick="resetWizard()" class="text-on-surface-variant font-medium px-8 py-4 hover:text-primary transition-colors">
-                        Beratung neu starten
-                    </button>
-                </div>
-            </div>
+                    <!-- Ersatz-Elektroden -->
+                    <div class="accessory-card bg-white rounded-xl border border-outline-variant/20 p-4 flex items-center gap-4">
+                        <div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl text-primary">cable</span>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <h4 class="font-bold text-sm">Ersatz-Elektroden (Erwachsene)</h4>
+                            <p class="text-xs text-on-surface-variant">Vorsorglich griffbereit. Haltbarkeit: 2 Jahre.</p>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <div class="text-primary font-bold text-sm mb-1">59 €</div>
+                            <button class="add-btn px-3 py-1.5 bg-surface-container-low text-on-surface text-xs font-bold rounded-lg hover:bg-primary hover:text-white transition-all" onclick="toggleAccessory(this)">
+                                Hinzufügen
+                            </button>
+                        </div>
+                    </div>
 
-            <!-- Why Choose Us Bento -->
-            <div class="mt-24 grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4">
-                <div class="md:col-span-2 md:row-span-2 bg-primary-container p-8 rounded-2xl text-on-primary-container relative overflow-hidden flex flex-col justify-end min-h-[400px]">
-                    <img alt="AED Training Session" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ-9NoGvt4wK-UUJY1V8ZS3kenOzx9MNGnczsU7E4RirFpYUZfD4NSD2azNyiUBS3kzNmrgCjKBF-XQyxsjHUSHIRZcEOVOpAEnB49gQV9k-KxCzN8dSYmVLoBn_wzOoTX0cBCqZB6N4Nk5jlv2-JEOTJr6RMaRjv2ByEWbokYPynzrPg7GWpEmmrxtET475SnH-0wTaSWw_FXZkti6yczIruEX2JaxUZqNXw9ttlFUIBVep_2-GnN5OW6_dQ7LRwhldVjj76qN30I" />
-                    <div class="relative z-10">
-                        <h2 class="text-3xl font-black mb-4">Höchste Qualitätsstandards</h2>
-                        <p class="opacity-90 max-w-md">Jedes Gerät in unserem Sortiment erfüllt die strengsten europäischen Medizinprodukt-Richtlinien. Wir beraten Sie herstellerunabhängig.</p>
+                    <!-- Kinder-Elektroden (conditional) -->
+                    <div id="childPads" class="accessory-card bg-white rounded-xl border-2 border-primary/20 p-4 flex items-center gap-4 hidden">
+                        <div class="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl text-primary">child_care</span>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <h4 class="font-bold text-sm">Kinder-Elektroden <span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full ml-1 font-bold uppercase">Empfohlen</span></h4>
+                            <p class="text-xs text-on-surface-variant">Speziell für Kinder unter 8 Jahren / 25 kg.</p>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <div class="text-primary font-bold text-sm mb-1">79 €</div>
+                            <button class="add-btn px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary-container transition-all" onclick="toggleAccessory(this)">
+                                Hinzufügen
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Erste-Hilfe-Set -->
+                    <div class="accessory-card bg-white rounded-xl border border-outline-variant/20 p-4 flex items-center gap-4">
+                        <div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl text-primary">medical_services</span>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <h4 class="font-bold text-sm">Notfall-Set</h4>
+                            <p class="text-xs text-on-surface-variant">Beatmungsmaske, Handschuhe, Rasierer, Schere, Tuch.</p>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <div class="text-primary font-bold text-sm mb-1">29 €</div>
+                            <button class="add-btn px-3 py-1.5 bg-surface-container-low text-on-surface text-xs font-bold rounded-lg hover:bg-primary hover:text-white transition-all" onclick="toggleAccessory(this)">
+                                Hinzufügen
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Outdoor-Schutzbox (conditional) -->
+                    <div id="outdoorBox" class="accessory-card bg-white rounded-xl border-2 border-primary/20 p-4 flex items-center gap-4 hidden">
+                        <div class="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl text-primary">inventory_2</span>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <h4 class="font-bold text-sm">Outdoor-Schutzbox <span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full ml-1 font-bold uppercase">Empfohlen</span></h4>
+                            <p class="text-xs text-on-surface-variant">Wetterfester AED-Kasten mit Heizung und Alarm. IP65.</p>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <div class="text-primary font-bold text-sm mb-1">349 €</div>
+                            <button class="add-btn px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary-container transition-all" onclick="toggleAccessory(this)">
+                                Hinzufügen
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Schulung -->
+                    <div class="accessory-card bg-white rounded-xl border border-outline-variant/20 p-4 flex items-center gap-4">
+                        <div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl text-primary">school</span>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <h4 class="font-bold text-sm">AED-Schulung (bis 12 Personen)</h4>
+                            <p class="text-xs text-on-surface-variant">2h Praxiskurs, BG-konform, bei Ihnen vor Ort.</p>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <div class="text-primary font-bold text-sm mb-1">390 €</div>
+                            <button class="add-btn px-3 py-1.5 bg-surface-container-low text-on-surface text-xs font-bold rounded-lg hover:bg-primary hover:text-white transition-all" onclick="toggleAccessory(this)">
+                                Hinzufügen
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pro-Care -->
+                    <div class="accessory-card bg-inverse-surface rounded-xl p-4 flex items-center gap-4 text-white">
+                        <div class="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl text-primary-fixed-dim">verified_user</span>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <h4 class="font-bold text-sm">Pro-Care™ Wartungsvertrag</h4>
+                            <p class="text-xs text-white/60">Jährliche Prüfung, automatischer Ersatz, Compliance-Berichte.</p>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <div class="text-primary-fixed-dim font-bold text-sm mb-1">19 €/Mt.</div>
+                            <button class="add-btn px-3 py-1.5 bg-white/10 text-white text-xs font-bold rounded-lg hover:bg-white hover:text-inverse-surface transition-all" onclick="toggleAccessory(this)">
+                                Hinzufügen
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="md:col-span-2 bg-surface-container-highest p-6 rounded-2xl flex items-center gap-6">
-                    <div class="bg-white p-3 rounded-lg">
-                        <span class="material-symbols-outlined text-primary text-3xl">verified</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold">Zertifizierter Service</h4>
-                        <p class="text-sm text-on-surface-variant">Wartung und STK-Prüfung direkt durch unsere Experten.</p>
-                    </div>
-                </div>
-                <div class="md:col-span-1 bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-center text-center">
-                    <span class="text-3xl font-black text-primary mb-1">24h</span>
-                    <p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Express Versand</p>
-                </div>
-                <div class="md:col-span-1 bg-white border border-outline-variant p-6 rounded-2xl flex flex-col justify-center text-center">
-                    <span class="text-3xl font-black text-primary mb-1">5k+</span>
-                    <p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Zufriedene Kunden</p>
+
+                <a href="warenkorb.html" class="block w-full bg-primary text-on-primary py-4 rounded-xl font-bold text-sm text-center hover:bg-primary-container transition-colors">
+                    Alles in den Warenkorb
+                </a>
+
+                <div class="flex gap-3 justify-center mt-4">
+                    <button onclick="goToStep(3)" class="text-on-surface-variant font-medium text-xs hover:text-primary transition-colors">Zurück zur Empfehlung</button>
+                    <span class="text-outline-variant">·</span>
+                    <a href="vergleich.html" class="text-primary font-medium text-xs hover:underline">Alle Geräte vergleichen</a>
                 </div>
             </div>
 
             <!-- Support Banner -->
-            <div class="mt-16 bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="mt-20 bg-white p-6 rounded-2xl shadow-sm border border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-4">
-                    <div class="bg-tertiary-container/10 p-4 rounded-full">
-                        <span class="material-symbols-outlined text-tertiary text-3xl">support_agent</span>
+                    <div class="w-12 h-12 bg-tertiary/10 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-tertiary text-2xl">support_agent</span>
                     </div>
                     <div>
-                        <h4 class="font-bold text-lg">Persönliche Beratung gewünscht?</h4>
-                        <p class="text-sm text-on-surface-variant">Unsere AED-Experten helfen Ihnen gerne weiter.</p>
+                        <h4 class="font-bold text-sm">Persönliche Beratung</h4>
+                        <p class="text-xs text-on-surface-variant">Unsere Experten helfen Ihnen gerne weiter.</p>
                     </div>
                 </div>
-                <a href="tel:+4930123456789" class="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold hover:bg-primary-container transition-colors whitespace-nowrap">
-                    +49 (0)30 1234 567 89
+                <a href="tel:+4930123456789" class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-primary-container transition-colors whitespace-nowrap">
+                    Anrufen
                 </a>
             </div>
+
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="w-full mt-auto bg-slate-50 border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-8 py-12">
+    <footer class="bg-inverse-surface text-white/80 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="text-lg font-black text-primary uppercase tracking-tight">AED Premium</div>
-                <nav class="flex flex-wrap justify-center gap-6 text-xs text-slate-500">
-                    <a class="hover:text-primary hover:underline" href="#">Datenschutz</a>
-                    <a class="hover:text-primary hover:underline" href="#">AGB</a>
-                    <a class="hover:text-primary hover:underline" href="#">Impressum</a>
+                <span class="text-sm font-black text-white">AED Premium</span>
+                <nav class="flex gap-6 text-xs text-white/40">
+                    <a class="hover:text-white/70" href="#">Datenschutz</a>
+                    <a class="hover:text-white/70" href="#">AGB</a>
+                    <a class="hover:text-white/70" href="#">Impressum</a>
                 </nav>
-                <div class="text-xs text-slate-500">© 2026 AED Premium</div>
+                <span class="text-xs text-white/40">© 2026 AED Premium</span>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu
-        document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
-        document.getElementById('menuClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
-
-        // Wizard state
-        let selections = {};
-        const stepTitles = { 1: 'Wer nutzt den AED?', 2: 'Wo wird er eingesetzt?', 3: 'Ihr Budget?' };
-
-        const products = [
-            { name: 'HeartBeat Home-S', price: '995 €', desc: 'Optimiert für den Heimgebrauch. Vereinfachte Sprachanweisungen und Kindermodus.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCcIwO1TIti-7qF0gy_3_SOoLsYJuzdMfHezFJd9vDoSZQqTAxqFgLylPz-brsDVjLe9kGxmxCsmL2Bxl6QQKzOtXw3KdW5k7MTKtXE6b8jViY2sKsZ_qBe2ymvow2vsN5lIb7DoJIzuc-YmDlvdn7gXaSHac1kzGfgCqq5gt1nAOq_1ToGIrfCGQjMuaSE-LmVNCluZO-w1LYK2uZmtMsDTpHAT5vnj5MzQkvF1Zi8yEXNxHXuEpazr6R7Iq0KdJe4dsoSZMboG4ON', tags: ['privat', 'innen', 'basis'] },
-            { name: 'ProGuard-X Defibrillator', price: '1.499 €', desc: 'Der Goldstandard für hochfrequentierte Umgebungen. 8 Jahre Garantie.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAH5-Fv95cxggy_mOC69ijZgzcvAnR8NwTqkz-6etbWe8XcVqRl18yrjiOxZb4FVZ_OkKksovdLWY4Nl5YOOKXnhgdwAXFIz2_GvIyfJtHzAf4tWaupRM9LklljVPW3jsdDXu27Itv0Hf1PsK5HtGMGtpghiSGQNS5f0DgIoR0hNtn8Sd538OtFlLanpzqDXwLZbv3SKy4UtwRkOXtD29WwhxUYRvnaynLqsqyxhas7jQv4su1m6URq_XfzxFI-rHgz5ZkBozsQOuFe', tags: ['verein', 'unternehmen', 'innen', 'beides', 'premium'] },
-            { name: 'EliteForce Taktik', price: '1.850 €', desc: 'IP67-Schutzklasse. Für Baustellen, Sportvereine und maritime Einsätze.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDqB778HTYx2Tt-wlDddJNsfoTv2rs9cyUziBy9gs0mhEMtPuxqKV31UcH1EXr-4cnS5NZJFSNwohyAhv9uTvfy2kVFH5gPIkF1iJk1lEFgw5fkFthiqjYyqEMHuMizN7-R3jHPI_Y-jXWngWwwHc2JVBIjurqwpJ4Ft8xm78HOa143mePzCfsCs-w6GovpGsoMOXwVS2Aeu3x37jaSH8DkXhvMoA5ta1VkZ9ozMO_x7pXuTmEXr8tGOxhO3mw_nBPhsVpBJRaaZqj9', tags: ['verein', 'unternehmen', 'aussen', 'beides', 'profi'] },
-        ];
-
-        function selectOption(step, value) {
-            selections[step] = value;
-            if (step < 3) {
-                goToStep(step + 1);
-            } else {
-                showResults();
+        // Data
+        const products = {
+            home: {
+                name: 'HeartBeat Home-S', price: '995 €', desc: 'Unser kompaktestes Gerät. Sprachgeführt, mit Kindermodus und einfachster Bedienung. Ideal für Familien.',
+                img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCcIwO1TIti-7qF0gy_3_SOoLsYJuzdMfHezFJd9vDoSZQqTAxqFgLylPz-brsDVjLe9kGxmxCsmL2Bxl6QQKzOtXw3KdW5k7MTKtXE6b8jViY2sKsZ_qBe2ymvow2vsN5lIb7DoJIzuc-YmDlvdn7gXaSHac1kzGfgCqq5gt1nAOq_1ToGIrfCGQjMuaSE-LmVNCluZO-w1LYK2uZmtMsDTpHAT5vnj5MzQkvF1Zi8yEXNxHXuEpazr6R7Iq0KdJe4dsoSZMboG4ON',
+                features: ['IP44', '5 J. Garantie', 'Kindermodus', '1,8 kg']
+            },
+            pro: {
+                name: 'ProGuard-X', price: '1.499 €', desc: 'Unser Allrounder für Büros, Praxen und Vereine. LCD-Display, täglicher Selbsttest und WLAN-Fernüberwachung.',
+                img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAH5-Fv95cxggy_mOC69ijZgzcvAnR8NwTqkz-6etbWe8XcVqRl18yrjiOxZb4FVZ_OkKksovdLWY4Nl5YOOKXnhgdwAXFIz2_GvIyfJtHzAf4tWaupRM9LklljVPW3jsdDXu27Itv0Hf1PsK5HtGMGtpghiSGQNS5f0DgIoR0hNtn8Sd538OtFlLanpzqDXwLZbv3SKy4UtwRkOXtD29WwhxUYRvnaynLqsqyxhas7jQv4su1m6URq_XfzxFI-rHgz5ZkBozsQOuFe',
+                features: ['IP55', '8 J. Garantie', 'WLAN', 'LCD-Display']
+            },
+            elite: {
+                name: 'EliteForce Taktik', price: '1.850 €', desc: 'Maximale Robustheit für extreme Bedingungen. MIL-STD-zertifiziert, wasserdicht und staubdicht.',
+                img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDqB778HTYx2Tt-wlDddJNsfoTv2rs9cyUziBy9gs0mhEMtPuxqKV31UcH1EXr-4cnS5NZJFSNwohyAhv9uTvfy2kVFH5gPIkF1iJk1lEFgw5fkFthiqjYyqEMHuMizN7-R3jHPI_Y-jXWngWwwHc2JVBIjurqwpJ4Ft8xm78HOa143mePzCfsCs-w6GovpGsoMOXwVS2Aeu3x37jaSH8DkXhvMoA5ta1VkZ9ozMO_x7pXuTmEXr8tGOxhO3mw_nBPhsVpBJRaaZqj9',
+                features: ['IP67', '10 J. Garantie', 'MIL-STD', '8 Sprachen']
             }
+        };
+
+        let selectedTags = new Set();
+        let selectedEnv = '';
+
+        // Symptom tags
+        document.querySelectorAll('.symptom-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.classList.toggle('active');
+                const t = tag.dataset.tag;
+                selectedTags.has(t) ? selectedTags.delete(t) : selectedTags.add(t);
+                document.getElementById('step1Next').disabled = selectedTags.size === 0;
+                updateDiagnosis();
+            });
+        });
+
+        function updateDiagnosis() {
+            const hint = document.getElementById('diagnosisHint');
+            const text = document.getElementById('diagnosisText');
+            if (selectedTags.size === 0) { hint.classList.add('hidden'); return; }
+            hint.classList.remove('hidden');
+
+            const hints = [];
+            if (selectedTags.has('kinder')) hints.push('Kindermodus-fähiges Gerät empfohlen');
+            if (selectedTags.has('outdoor') || selectedTags.has('baustelle')) hints.push('Hohe Schutzklasse (IP55+) nötig');
+            if (selectedTags.has('sport')) hints.push('Tragbares, stoßfestes Gerät ideal');
+            if (selectedTags.has('mitarbeiter') || selectedTags.has('compliance')) hints.push('BG-konforme Lösung mit Schulung sinnvoll');
+            if (selectedTags.has('publikum')) hints.push('Einfache Bedienung und gut sichtbare Montage wichtig');
+            if (selectedTags.has('senioren')) hints.push('Gerät mit extra lauter Sprachführung empfohlen');
+            if (selectedTags.has('zuhause')) hints.push('Kompaktes Heimgerät mit Sprachführung ausreichend');
+            if (selectedTags.has('reisen')) hints.push('Leichtes, portables Gerät bevorzugt');
+            if (hints.length === 0) hints.push('Basierend auf Ihrer Auswahl können wir eine Empfehlung geben.');
+            text.textContent = hints.join('. ') + '.';
         }
 
-        function goToStep(step) {
-            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
-            document.getElementById('step' + step).classList.add('active');
-            document.getElementById('stepLabel').textContent = `Schritt ${step} von 3`;
-            document.getElementById('stepTitle').textContent = stepTitles[step];
-            document.getElementById('progressBar').style.width = `${(step / 3) * 100}%`;
+        function selectEnv(env) {
+            selectedEnv = env;
+            document.querySelectorAll('[data-env]').forEach(b => b.classList.remove('selected'));
+            document.querySelector(`[data-env="${env}"]`).classList.add('selected');
+            setTimeout(() => { showResult(); goToStep(3); }, 300);
         }
 
-        function goBack(step) {
-            goToStep(step);
+        function showResult() {
+            // Determine product
+            let pick = 'pro'; // default
+            if (selectedEnv === 'extrem' || selectedTags.has('baustelle')) pick = 'elite';
+            else if (selectedEnv === 'aussen' && (selectedTags.has('sport') || selectedTags.has('outdoor'))) pick = 'elite';
+            else if (selectedTags.has('zuhause') && !selectedTags.has('mitarbeiter') && !selectedTags.has('compliance')) pick = 'home';
+            else if (selectedTags.has('reisen') && selectedTags.size <= 2) pick = 'home';
+
+            const p = products[pick];
+            document.getElementById('recImg').src = p.img;
+            document.getElementById('recImg').alt = p.name;
+            document.getElementById('recName').textContent = p.name;
+            document.getElementById('recPrice').textContent = p.price;
+            document.getElementById('recDesc').textContent = p.desc;
+            document.getElementById('recNameRepeat').textContent = p.name;
+
+            const featuresEl = document.getElementById('recFeatures');
+            featuresEl.innerHTML = p.features.map(f => `<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-semibold text-on-surface-variant">${f}</span>`).join('');
+
+            // Summary
+            const tagNames = Array.from(selectedTags);
+            const envName = {innen:'Innenbereich',aussen:'Außenbereich',extrem:'Extrembedingungen'}[selectedEnv];
+            document.getElementById('resultSummary').textContent = `Basierend auf ${tagNames.length} Angaben · ${envName}`;
+
+            // Conditional accessories
+            document.getElementById('childPads').classList.toggle('hidden', !selectedTags.has('kinder'));
+            document.getElementById('outdoorBox').classList.toggle('hidden', selectedEnv === 'innen');
         }
 
-        function showResults() {
-            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
-            document.getElementById('results').classList.add('active');
-            document.getElementById('stepLabel').textContent = 'Ergebnis';
-            document.getElementById('stepTitle').textContent = 'Ihre Empfehlung';
-            document.getElementById('progressBar').style.width = '100%';
-
-            const vals = Object.values(selections);
-            const scored = products.map(p => ({
-                ...p,
-                score: p.tags.filter(t => vals.includes(t)).length
-            })).sort((a, b) => b.score - a.score);
-
-            const grid = document.getElementById('recommendationGrid');
-            grid.innerHTML = scored.map((p, i) => `
-                <div class="bg-white rounded-2xl p-6 border ${i === 0 ? 'border-primary ring-4 ring-primary/10' : 'border-outline-variant/30'} shadow-sm relative">
-                    ${i === 0 ? '<div class="absolute -top-3 left-6 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Top-Empfehlung</div>' : ''}
-                    <div class="aspect-video rounded-xl bg-slate-50 mb-4 overflow-hidden flex items-center justify-center p-4">
-                        <img alt="${p.name}" class="h-full object-contain" src="${p.img}" />
-                    </div>
-                    <h3 class="text-xl font-bold mb-1">${p.name}</h3>
-                    <span class="text-primary font-black text-lg">${p.price}</span>
-                    <p class="text-sm text-on-surface-variant mt-2 mb-4">${p.desc}</p>
-                    <a href="warenkorb.html" class="block w-full bg-primary text-on-primary py-3 rounded-lg font-bold text-center hover:bg-primary-container transition-colors">In den Warenkorb</a>
-                </div>
-            `).join('');
+        function goToStep(n) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + n).classList.add('active');
+            const titles = {1:'Ihre Situation', 2:'Einsatzort', 3:'Empfehlung', 4:'Zubehör'};
+            document.getElementById('stepLabel').textContent = n <= 4 ? `Schritt ${Math.min(n,4)} von 4` : 'Fertig';
+            document.getElementById('stepTitle').textContent = titles[n] || '';
+            document.getElementById('progressBar').style.width = `${(n/4)*100}%`;
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        function resetWizard() {
-            selections = {};
-            goToStep(1);
+        function toggleAccessory(btn) {
+            const card = btn.closest('.accessory-card');
+            const isAdded = card.classList.toggle('added');
+            btn.textContent = isAdded ? 'Hinzugefügt ✓' : 'Hinzufügen';
         }
     </script>
 </body>
